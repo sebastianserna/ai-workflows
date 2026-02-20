@@ -38,6 +38,16 @@ templates/
 - Some templates include an `i18n/` subfolder with translations
 - If a user requests a specific language, check for `i18n/` inside the template before translating manually
 
+## Git workflow
+
+- Main branch: `main` (protected, PRs required)
+- Branch naming: `feature/`, `fix/`, `hotfix/`, `refactor/`, `chore/`, `docs/` + description in English
+- Commits: Conventional Commits in English (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `style:`, `test:`, `ci:`, `perf:`, `build:`)
+- PRs: title in English (Conventional Commits format), description/body in Spanish
+- Issues: title and description in Spanish
+- Do **not** include `Co-Authored-By` from AI agents in commits
+- Do **not** include "Generated with Claude Code" links in commit messages or PRs
+
 ## Guidelines for agents
 
 - Do **not** modify templates in this repo unless explicitly asked — they are meant to be copied, not edited in place
