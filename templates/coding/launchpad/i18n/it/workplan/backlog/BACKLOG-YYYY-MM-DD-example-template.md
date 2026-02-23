@@ -7,7 +7,7 @@
 **Dominio:** generale
 **Issue:** —
 
-> Questo file è un esempio di riferimento. L'ID `0000` è riservato ai template. Quando si crea il primo piano reale, usare l'ID `0001`.
+> Questo file è un esempio di riferimento. Quando è configurato un issue tracker, i piani includono il numero di issue nel nome del file (es. `BACKLOG-2026-01-15-i0001-descrizione.md`). Senza tracker, il formato è `BACKLOG-YYYY-MM-DD-descrizione.md`.
 
 ## Avanzamento
 

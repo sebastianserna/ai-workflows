@@ -12,27 +12,37 @@
 
 ## ファイル命名規則
 
+命名規則はIssueトラッカーの設定に依存します：
+
+**Issueトラッカーあり（GitHub / GitLab）：**
+
 ```
-TYPE-YYYY-MM-DD-NNNN-description.md
+TYPE-YYYY-MM-DD-iNNNN-description.md
+```
+
+**Issueトラッカーなし（なし）：**
+
+```
+TYPE-YYYY-MM-DD-description.md
 ```
 
 | セグメント | 説明 | 例 |
 |-----------|------|-----|
 | `TYPE` | 状態：`BACKLOG`、`CODING`、`DONE`、`DRAFT` | `BACKLOG` |
 | `YYYY-MM-DD` | 現在の状態への遷移日 | `2026-01-15` |
-| `NNNN` | 内部連番ID、4桁ゼロパディング | `0001` |
+| `iNNNN` | Issue番号、4桁ゼロパディングに`i`プレフィックス付き（トラッカー設定時のみ） | `i0060` |
 | `description` | kebab-caseの短い名前 | `user-auth-setup` |
 
-### 内部ID（`NNNN`）
+### Issue識別子（`iNNNN`）
 
-プロジェクト固有の増分カウンター。次のIDを取得するには：
+Issueトラッカーが設定されている場合（GitHubまたはGitLab）、各計画にはそれに対応するIssueが**必須**です。Issue番号が計画の一意の識別子となります：
 
-1. すべてのサブフォルダ（`backlog/`、`coding/`、`done/`）で最大の `NNNN` を検索
-2. 1を加算
+- `i`プレフィックスはIssue番号を他の数値セグメントと区別します
+- 4桁にゼロパディング：Issue #7 → `i0007`、Issue #123 → `i0123`
+- 識別子は**永続的**です — 計画が状態間を移動しても変わりません
+- GitHub/GitLabがアトミックな一意性を保証し、協業環境での衝突リスクを排除します
 
-IDは**永続的**です — 計画の状態や名前が変更されても変わりません。
-
-> **予約済み：** ID `0000` はサンプル/テンプレートファイル用に予約されています。最初の実際の計画は `0001` を使用してください。
+**Issueトラッカーが「なし」の場合**、計画には識別子セグメントがありません。ファイル名は単に `TYPE-YYYY-MM-DD-description.md` となります。
 
 ### 日付ルール
 
@@ -72,6 +82,7 @@ workplan/
 - 状態はファイル名のプレフィックスと一致すること
 - 日付は各遷移が発生した時点を記録（`—` は該当なし）
 - Issueトラッカーが「なし」の場合、**Issue** は `—`
+- トラッカーが有効な場合、**Issue** はIssueへのリンク：`[#60](https://github.com/user/repo/issues/60)`
 
 ## 標準テンプレート
 
@@ -147,44 +158,50 @@ workplan/
 
 ### 計画の作成
 
-1. 次の連番ID（`NNNN`）を取得
-2. `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md` にファイルを作成
+**Issueトラッカーあり：**
+
+1. まずIssueを作成：`gh issue create`（GitHub）または `glab issue create`（GitLab）
+2. Issue番号を記録（例：#60）
+3. `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` にファイルを作成（例：`BACKLOG-2026-01-15-i0060-user-auth-setup.md`）
+4. `Issue` ヘッダーフィールドにリンクを記入
+
+**Issueトラッカーなし：**
+
+1. `backlog/BACKLOG-YYYY-MM-DD-description.md` にファイルを作成
 
 ### 作業開始
 
-1. `backlog/` から `coding/CODING-YYYY-MM-DD-NNNN-description.md` に移動（日付 = 今日、ID変更なし）
+1. `backlog/` から `coding/CODING-YYYY-MM-DD-...-description.md` に移動（日付 = 今日、識別子変更なし）
 2. ヘッダーを更新：`状態：Coding`、`Coding：YYYY-MM-DD`
 
 ### 完了
 
-1. `coding/` から `done/DONE-YYYY-MM-DD-NNNN-description.md` に移動（日付 = 今日）
+1. `coding/` から `done/DONE-YYYY-MM-DD-...-description.md` に移動（日付 = 今日）
 2. ヘッダーを更新：`状態：Done`、`Done：YYYY-MM-DD`
 
 ### backlogに戻す
 
-1. `coding/` から `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md` に移動
+1. `coding/` から `backlog/BACKLOG-YYYY-MM-DD-...-description.md` に移動
 2. ヘッダーを更新：`状態：Backlog`
 
 ## 相互参照
 
-計画間の参照には永続的な**内部ID**（`NNNN`）を使用します：
+**Issueトラッカーあり：** 計画間の参照にはIssue番号 `#N` を使用します。これは永続的で自動リンクが有効です：
 
 ```markdown
-**依存関係：** 計画 0001、計画 0002
+**依存関係：** #1、#2
 
-詳細は計画 0003を参照。
+詳細は #3 を参照。
 ```
 
-**ルール：** 完全なファイル名での参照は禁止（遷移ごとに変わるため）。常に内部IDを使用。
+**Issueトラッカーなし：** 説明的な名前で計画を参照します：
 
-## 次のIDを取得
-
-```bash
-# すべてのサブフォルダで最大のNNNNを検索
-ls workplan/{backlog,coding,done}/ | grep -oP '\d{4}' | sort -n | tail -1
-# 結果に1を加算
+```markdown
+**依存関係：** user-auth-setup、api-rate-limiting
 ```
+
+**ルール：** 完全なファイル名での参照は禁止（遷移ごとに変わるため）。
 
 ## 下書き（ドラフト）
 
-下書きは `draft/` に `DRAFT-YYYY-MM-DD-description.md` の形式で保存されます。BACKLOG→CODING→DONEのワークフローには従わず、連番IDもありません。アイデアバンクとして機能します：計画の下書き、技術的決定事項、探索的メモ。下書きが十分に成熟したら、`backlog/` に正式な計画として昇格させます。
+下書きは `draft/` に `DRAFT-YYYY-MM-DD-description.md` の形式で保存されます。BACKLOG→CODING→DONEのワークフローには従わず、Issue識別子もありません。アイデアバンクとして機能します：計画の下書き、技術的決定事項、探索的メモ。下書きが十分に成熟したら、`backlog/` に正式な計画として昇格させます。

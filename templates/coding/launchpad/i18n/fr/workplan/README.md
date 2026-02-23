@@ -12,27 +12,37 @@
 
 ## Format de nom de fichier
 
+Le format depend de la configuration de l'issue tracker :
+
+**Avec issue tracker (GitHub / GitLab) :**
+
 ```
-TYPE-YYYY-MM-DD-NNNN-description.md
+TYPE-YYYY-MM-DD-iNNNN-description.md
+```
+
+**Sans issue tracker (aucun) :**
+
+```
+TYPE-YYYY-MM-DD-description.md
 ```
 
 | Segment | Description | Exemple |
 |---------|-------------|---------|
 | `TYPE` | Etat : `BACKLOG`, `CODING`, `DONE`, `DRAFT` | `BACKLOG` |
 | `YYYY-MM-DD` | Date de transition vers l'etat actuel | `2026-01-15` |
-| `NNNN` | ID sequentiel interne, 4 chiffres zero-padded | `0001` |
+| `iNNNN` | Numero d'issue, 4 chiffres zero-padded avec prefixe `i` (uniquement avec tracker) | `i0060` |
 | `description` | Nom court en kebab-case | `user-auth-setup` |
 
-### ID interne (`NNNN`)
+### Identifiant d'issue (`iNNNN`)
 
-Compteur incremental propre au projet. Pour obtenir le suivant :
+Lorsqu'un issue tracker est configure (GitHub ou GitLab), chaque plan **doit** avoir un issue correspondant. Le numero d'issue devient l'identifiant unique du plan :
 
-1. Trouver le plus grand `NNNN` dans tous les sous-dossiers (`backlog/`, `coding/`, `done/`)
-2. Ajouter 1
+- Le prefixe `i` distingue le numero d'issue des autres segments numeriques
+- Zero-padded a 4 chiffres : issue #7 → `i0007`, issue #123 → `i0123`
+- L'identifiant est **permanent** — il ne change pas lorsque le plan est deplace entre les etats
+- GitHub/GitLab garantit l'unicite atomique, eliminant les risques de collision dans les environnements collaboratifs
 
-L'ID est **permanent** — il ne change pas meme si l'etat ou le nom du plan change.
-
-> **Reserve :** L'ID `0000` est reserve pour les fichiers d'exemple/template. Le premier plan reel doit utiliser `0001`.
+**Lorsque l'issue tracker est « aucun »**, les plans n'ont pas de segment identifiant. Le nom de fichier est simplement `TYPE-YYYY-MM-DD-description.md`.
 
 ### Regle de date
 
@@ -72,6 +82,7 @@ workplan/
 - L'etat doit correspondre au prefixe du nom de fichier
 - Les dates enregistrent quand chaque transition a eu lieu (`—` si non applicable)
 - **Issue** est `—` si l'issue tracker est configure comme « aucun »
+- Lorsque le tracker est actif, **Issue** contient le lien vers l'issue : `[#60](https://github.com/utilisateur/repo/issues/60)`
 
 ## Modele standard
 
@@ -147,44 +158,50 @@ Uniquement pour les plans complexes.
 
 ### Creer un plan
 
-1. Obtenir le prochain ID sequentiel (`NNNN`)
-2. Creer le fichier dans `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`
+**Avec issue tracker :**
+
+1. Creer d'abord l'issue : `gh issue create` (GitHub) ou `glab issue create` (GitLab)
+2. Noter le numero d'issue (ex. #60)
+3. Creer le fichier dans `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (ex. `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
+4. Remplir le champ `Issue` de l'en-tete avec le lien
+
+**Sans issue tracker :**
+
+1. Creer le fichier dans `backlog/BACKLOG-YYYY-MM-DD-description.md`
 
 ### Demarrer le travail
 
-1. Deplacer de `backlog/` vers `coding/CODING-YYYY-MM-DD-NNNN-description.md` (date = aujourd'hui, ID inchange)
+1. Deplacer de `backlog/` vers `coding/CODING-YYYY-MM-DD-...-description.md` (date = aujourd'hui, identifiant inchange)
 2. Mettre a jour l'en-tete : `Etat : Coding`, `Coding : YYYY-MM-DD`
 
 ### Terminer
 
-1. Deplacer de `coding/` vers `done/DONE-YYYY-MM-DD-NNNN-description.md` (date = aujourd'hui)
+1. Deplacer de `coding/` vers `done/DONE-YYYY-MM-DD-...-description.md` (date = aujourd'hui)
 2. Mettre a jour l'en-tete : `Etat : Done`, `Done : YYYY-MM-DD`
 
 ### Retourner au backlog
 
-1. Deplacer de `coding/` vers `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`
+1. Deplacer de `coding/` vers `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
 2. Mettre a jour l'en-tete : `Etat : Backlog`
 
 ## References croisees
 
-Les plans se referencent entre eux en utilisant l'**ID interne** (`NNNN`), qui est permanent :
+**Avec issue tracker :** les plans se referencent entre eux en utilisant le numero d'issue avec `#N`, qui est permanent et active l'auto-linking :
 
 ```markdown
-**Dependances :** Plan 0001, Plan 0002
+**Dependances :** #1, #2
 
-Voir plan 0003 pour les details.
+Voir #3 pour les details.
 ```
 
-**Regle :** ne jamais referencer un plan par son nom de fichier complet (il change a chaque transition). Toujours utiliser l'ID interne.
+**Sans issue tracker :** referencer les plans par leur nom descriptif :
 
-## Obtenir le prochain ID
-
-```bash
-# Trouver le plus grand NNNN dans tous les sous-dossiers
-ls workplan/{backlog,coding,done}/ | grep -oP '\d{4}' | sort -n | tail -1
-# Ajouter 1 au resultat
+```markdown
+**Dependances :** user-auth-setup, api-rate-limiting
 ```
+
+**Regle :** ne jamais referencer un plan par son nom de fichier complet (il change a chaque transition).
 
 ## Brouillons (drafts)
 
-Les brouillons sont stockes dans `draft/` avec le format `DRAFT-YYYY-MM-DD-description.md`. Ils ne suivent pas le workflow BACKLOG->CODING->DONE et n'ont pas d'ID sequentiel. Ils servent de banque d'idees : brouillons de plans, decisions techniques, notes exploratoires. Quand un brouillon est suffisamment mur, il est promu en `backlog/` comme plan formel.
+Les brouillons sont stockes dans `draft/` avec le format `DRAFT-YYYY-MM-DD-description.md`. Ils ne suivent pas le workflow BACKLOG->CODING->DONE et n'ont pas d'identifiant d'issue. Ils servent de banque d'idees : brouillons de plans, decisions techniques, notes exploratoires. Quand un brouillon est suffisamment mur, il est promu en `backlog/` comme plan formel.

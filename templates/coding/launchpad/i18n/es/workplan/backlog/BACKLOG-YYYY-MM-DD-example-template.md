@@ -7,7 +7,7 @@
 **Dominio:** general
 **Issue:** —
 
-> Este archivo es un ejemplo de referencia. El ID `0000` está reservado para templates. Al crear el primer plan real, usar ID `0001`.
+> Este archivo es un ejemplo de referencia. Cuando hay un issue tracker configurado, los planes incluyen el número de issue en el nombre de archivo (ej. `BACKLOG-2026-01-15-i0001-descripción.md`). Sin tracker, el formato es `BACKLOG-YYYY-MM-DD-descripción.md`.
 
 ## Progreso
 

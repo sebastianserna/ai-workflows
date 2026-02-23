@@ -7,7 +7,7 @@
 **Domain:** general
 **Issue:** —
 
-> This file is a reference example. ID `0000` is reserved for templates. When creating the first real plan, use ID `0001`.
+> This file is a reference example. When an issue tracker is configured, plans include the issue number in the filename (e.g., `BACKLOG-2026-01-15-i0001-description.md`). Without a tracker, the format is `BACKLOG-YYYY-MM-DD-description.md`.
 
 ## Progress
 

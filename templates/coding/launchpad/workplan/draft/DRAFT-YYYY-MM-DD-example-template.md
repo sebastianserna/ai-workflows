@@ -1,6 +1,6 @@
 # Draft: Example draft
 
-> This file is a reference example. Drafts have no sequential ID and do not follow the backlog → coding → done workflow. They are ideas, technical decisions, or exploratory notes.
+> This file is a reference example. Drafts have no issue identifier and do not follow the backlog → coding → done workflow. They are ideas, technical decisions, or exploratory notes.
 
 ## Context
 
@@ -18,4 +18,4 @@ Description of the problem or idea being explored.
 
 ## Decision
 
-When the draft matures, it is promoted to `backlog/` as a formal plan with a sequential ID.
+When the draft matures, it is promoted to `backlog/` as a formal plan.

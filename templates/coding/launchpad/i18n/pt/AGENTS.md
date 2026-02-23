@@ -71,13 +71,15 @@ A pasta `workplan/` gerencia o ciclo de vida das tarefas do projeto.
 - `backlog/` — Planos pendentes, priorizados e prontos para trabalhar
 - `coding/` — Planos em andamento
 - `done/` — Planos concluídos (arquivo histórico)
-- `draft/` — Rascunhos, ideias e decisões de arquitetura (sem workflow ou ID)
+- `draft/` — Rascunhos, ideias e decisões de arquitetura (sem workflow ou identificador)
 
 **Workflow:** `backlog/ -> coding/ -> done/`
 
-**Formato de nomes de arquivo:** `TYPE-YYYY-MM-DD-NNNN-description.md`
+**Formato de nomes de arquivo:**
+- Com issue tracker: `TYPE-YYYY-MM-DD-iNNNN-description.md`
+- Sem issue tracker: `TYPE-YYYY-MM-DD-description.md`
 - TYPE: `BACKLOG`, `CODING`, `DONE`
-- NNNN: ID sequencial permanente (não muda ao mover entre pastas)
+- iNNNN: número da issue do GitHub/GitLab (quando o tracker está configurado)
 
 Veja `workplan/README.md` para o template completo e regras detalhadas.
 

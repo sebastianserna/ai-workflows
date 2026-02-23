@@ -71,13 +71,15 @@ workplan/
 - `backlog/` — 대기 중인 계획, 우선순위 지정 및 작업 준비 완료
 - `coding/` — 진행 중인 계획
 - `done/` — 완료된 계획 (이력 보관)
-- `draft/` — 초안, 아이디어, 아키텍처 결정 (워크플로나 ID 없음)
+- `draft/` — 초안, 아이디어, 아키텍처 결정 (워크플로나 식별자 없음)
 
 **워크플로:** `backlog/ -> coding/ -> done/`
 
-**파일 명명 형식:** `TYPE-YYYY-MM-DD-NNNN-description.md`
+**파일 명명 형식:**
+- 이슈 트래커 사용: `TYPE-YYYY-MM-DD-iNNNN-description.md`
+- 이슈 트래커 미사용: `TYPE-YYYY-MM-DD-description.md`
 - TYPE: `BACKLOG`, `CODING`, `DONE`
-- NNNN: 영구 순차 ID (폴더 간 이동 시 변경되지 않음)
+- iNNNN: GitHub/GitLab 이슈 번호 (트래커 설정 시)
 
 전체 템플릿과 상세 규칙은 `workplan/README.md`를 참조하세요.
 

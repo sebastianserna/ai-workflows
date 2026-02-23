@@ -1,6 +1,6 @@
 # Bozza: Esempio di bozza
 
-> Questo file è un esempio di riferimento. Le bozze non hanno un ID sequenziale e non seguono il workflow backlog → coding → done. Sono idee, decisioni tecniche o note esplorative.
+> Questo file è un esempio di riferimento. Le bozze non hanno un identificatore di issue e non seguono il workflow backlog → coding → done. Sono idee, decisioni tecniche o note esplorative.
 
 ## Contesto
 
@@ -20,4 +20,4 @@ Descrizione del problema o dell'idea che si sta esplorando.
 
 ## Decisione
 
-Quando la bozza matura abbastanza, viene promossa a `backlog/` come piano formale con un ID sequenziale.
+Quando la bozza matura abbastanza, viene promossa a `backlog/` come piano formale.

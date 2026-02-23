@@ -12,27 +12,37 @@
 
 ## File naming format
 
+The format depends on whether an issue tracker is configured:
+
+**With issue tracker (GitHub / GitLab):**
+
 ```
-TYPE-YYYY-MM-DD-NNNN-description.md
+TYPE-YYYY-MM-DD-iNNNN-description.md
+```
+
+**Without issue tracker (none):**
+
+```
+TYPE-YYYY-MM-DD-description.md
 ```
 
 | Segment | Description | Example |
 |---------|-------------|---------|
 | `TYPE` | State: `BACKLOG`, `CODING`, `DONE`, `DRAFT` | `BACKLOG` |
 | `YYYY-MM-DD` | Date of transition to current state | `2026-01-15` |
-| `NNNN` | Internal sequential ID, 4 digits zero-padded | `0001` |
+| `iNNNN` | Issue number, 4 digits zero-padded with `i` prefix (only with tracker) | `i0060` |
 | `description` | Short name in kebab-case | `user-auth-setup` |
 
-### Internal ID (`NNNN`)
+### Issue identifier (`iNNNN`)
 
-Project-specific incremental counter. To get the next one:
+When an issue tracker is configured (GitHub or GitLab), each plan **must** have a corresponding issue. The issue number becomes the plan's unique identifier:
 
-1. Find the highest `NNNN` across all subfolders (`backlog/`, `coding/`, `done/`)
-2. Add 1
+- The `i` prefix distinguishes the issue number from other numeric segments
+- Zero-padded to 4 digits: issue #7 → `i0007`, issue #123 → `i0123`
+- The identifier is **permanent** — it does not change when the plan moves between states
+- GitHub/GitLab guarantees atomic uniqueness, eliminating collision risks in collaborative environments
 
-The ID is **permanent** — it does not change even if the plan's state or name changes.
-
-> **Reserved:** ID `0000` is reserved for example/template files. The first real plan must use `0001`.
+**When the issue tracker is "none"**, plans have no identifier segment. The filename is simply `TYPE-YYYY-MM-DD-description.md`.
 
 ### Date rule
 
@@ -72,6 +82,7 @@ workplan/
 - The state must match the filename prefix
 - Dates record when each transition occurred (`—` if not applicable)
 - **Issue** is `—` if the issue tracker is configured as "none"
+- When tracker is active, **Issue** links to the issue: `[#60](https://github.com/user/repo/issues/60)`
 
 ## Standard template
 
@@ -147,44 +158,50 @@ Only for complex plans.
 
 ### Create plan
 
-1. Get the next sequential ID (`NNNN`)
-2. Create file in `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`
+**With issue tracker:**
+
+1. Create the issue first: `gh issue create` (GitHub) or `glab issue create` (GitLab)
+2. Note the issue number (e.g., #60)
+3. Create file in `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (e.g., `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
+4. Fill in the `Issue` header field with the link
+
+**Without issue tracker:**
+
+1. Create file in `backlog/BACKLOG-YYYY-MM-DD-description.md`
 
 ### Start work
 
-1. Move from `backlog/` to `coding/CODING-YYYY-MM-DD-NNNN-description.md` (date = today, ID unchanged)
+1. Move from `backlog/` to `coding/CODING-YYYY-MM-DD-...-description.md` (date = today, identifier unchanged)
 2. Update header: `State: Coding`, `Coding: YYYY-MM-DD`
 
 ### Complete
 
-1. Move from `coding/` to `done/DONE-YYYY-MM-DD-NNNN-description.md` (date = today)
+1. Move from `coding/` to `done/DONE-YYYY-MM-DD-...-description.md` (date = today)
 2. Update header: `State: Done`, `Done: YYYY-MM-DD`
 
 ### Return to backlog
 
-1. Move from `coding/` to `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`
+1. Move from `coding/` to `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
 2. Update header: `State: Backlog`
 
 ## Cross-references
 
-Plans reference each other using the **internal ID** (`NNNN`), which is permanent:
+**With issue tracker:** plans reference each other using the issue number with `#N`, which is permanent and enables auto-linking:
 
 ```markdown
-**Dependencies:** Plan 0001, Plan 0002
+**Dependencies:** #1, #2
 
-See plan 0003 for details.
+See #3 for details.
 ```
 
-**Rule:** never reference a plan by its full filename (it changes with each transition). Always use the internal ID.
+**Without issue tracker:** reference plans by their descriptive name:
 
-## Get next ID
-
-```bash
-# Find the highest NNNN across all subfolders
-ls workplan/{backlog,coding,done}/ | grep -oP '\d{4}' | sort -n | tail -1
-# Add 1 to the result
+```markdown
+**Dependencies:** user-auth-setup, api-rate-limiting
 ```
+
+**Rule:** never reference a plan by its full filename (it changes with each transition).
 
 ## Drafts
 
-Drafts are stored in `draft/` with the format `DRAFT-YYYY-MM-DD-description.md`. They do not follow the BACKLOG→CODING→DONE workflow and have no sequential ID. They serve as an idea bank: plan drafts, technical decisions, exploratory notes. When a draft matures enough, it is promoted to `backlog/` as a formal plan.
+Drafts are stored in `draft/` with the format `DRAFT-YYYY-MM-DD-description.md`. They do not follow the BACKLOG→CODING→DONE workflow and have no issue identifier. They serve as an idea bank: plan drafts, technical decisions, exploratory notes. When a draft matures enough, it is promoted to `backlog/` as a formal plan.

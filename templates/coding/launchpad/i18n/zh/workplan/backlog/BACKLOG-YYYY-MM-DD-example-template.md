@@ -7,7 +7,7 @@
 **领域：** 通用
 **Issue：** —
 
-> 此文件为参考示例。ID `0000` 保留用于模板。创建第一个真实计划时，请使用 ID `0001`。
+> 此文件为参考示例。当配置了 Issue 跟踪器时，计划在文件名中包含 Issue 编号（例如 `BACKLOG-2026-01-15-i0001-description.md`）。未配置跟踪器时，格式为 `BACKLOG-YYYY-MM-DD-description.md`。
 
 ## 进度
 

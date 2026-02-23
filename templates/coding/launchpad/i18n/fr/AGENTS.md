@@ -71,13 +71,15 @@ Le dossier `workplan/` gere le cycle de vie des taches du projet.
 - `backlog/` — Plans en attente, priorises et prets a travailler
 - `coding/` — Plans en cours de progression active
 - `done/` — Plans termines (archive historique)
-- `draft/` — Brouillons, idees et decisions d'architecture (sans workflow ni ID)
+- `draft/` — Brouillons, idees et decisions d'architecture (sans workflow ni identifiant)
 
 **Workflow :** `backlog/ -> coding/ -> done/`
 
-**Format de nom de fichier :** `TYPE-YYYY-MM-DD-NNNN-description.md`
+**Format de nom de fichier :**
+- Avec issue tracker : `TYPE-YYYY-MM-DD-iNNNN-description.md`
+- Sans issue tracker : `TYPE-YYYY-MM-DD-description.md`
 - TYPE : `BACKLOG`, `CODING`, `DONE`
-- NNNN : ID sequentiel permanent (ne change pas lors du deplacement entre dossiers)
+- iNNNN : numero d'issue GitHub/GitLab, zero-padded avec prefixe `i` (lorsque le tracker est configure)
 
 Consulter `workplan/README.md` pour le modele complet et les regles detaillees.
 

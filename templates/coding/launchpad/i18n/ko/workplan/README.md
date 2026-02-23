@@ -12,27 +12,37 @@
 
 ## 파일 명명 형식
 
+명명 형식은 이슈 트래커 설정 여부에 따라 달라집니다:
+
+**이슈 트래커 사용 (GitHub / GitLab):**
+
 ```
-TYPE-YYYY-MM-DD-NNNN-description.md
+TYPE-YYYY-MM-DD-iNNNN-description.md
+```
+
+**이슈 트래커 미사용 (없음):**
+
+```
+TYPE-YYYY-MM-DD-description.md
 ```
 
 | 세그먼트 | 설명 | 예시 |
 |----------|------|------|
 | `TYPE` | 상태: `BACKLOG`, `CODING`, `DONE`, `DRAFT` | `BACKLOG` |
 | `YYYY-MM-DD` | 현재 상태로의 전환 날짜 | `2026-01-15` |
-| `NNNN` | 내부 순차 ID, 4자리 제로패딩 | `0001` |
+| `iNNNN` | 이슈 번호, 4자리 제로패딩에 `i` 접두사 (트래커 설정 시에만) | `i0060` |
 | `description` | kebab-case 짧은 이름 | `user-auth-setup` |
 
-### 내부 ID (`NNNN`)
+### 이슈 식별자 (`iNNNN`)
 
-프로젝트 고유의 증분 카운터. 다음 ID를 얻으려면:
+이슈 트래커가 설정된 경우 (GitHub 또는 GitLab), 각 계획은 해당하는 이슈가 **필수**입니다. 이슈 번호가 계획의 고유 식별자가 됩니다:
 
-1. 모든 하위 폴더(`backlog/`, `coding/`, `done/`)에서 가장 큰 `NNNN`을 찾기
-2. 1을 더하기
+- `i` 접두사는 이슈 번호를 다른 숫자 세그먼트와 구분합니다
+- 4자리 제로패딩: 이슈 #7 → `i0007`, 이슈 #123 → `i0123`
+- 식별자는 **영구적**입니다 — 계획이 상태 간 이동해도 변경되지 않습니다
+- GitHub/GitLab이 원자적 고유성을 보장하여 협업 환경에서의 충돌 위험을 제거합니다
 
-ID는 **영구적**입니다 — 계획의 상태나 이름이 변경되어도 바뀌지 않습니다.
-
-> **예약됨:** ID `0000`은 예시/템플릿 파일용으로 예약되어 있습니다. 첫 번째 실제 계획은 `0001`을 사용하세요.
+**이슈 트래커가 "없음"인 경우**, 계획에는 식별자 세그먼트가 없습니다. 파일 이름은 단순히 `TYPE-YYYY-MM-DD-description.md`입니다.
 
 ### 날짜 규칙
 
@@ -72,6 +82,7 @@ workplan/
 - 상태는 파일 이름 접두사와 일치해야 함
 - 날짜는 각 전환이 발생한 시점을 기록 (`—`은 해당 없음)
 - 이슈 트래커가 "없음"으로 설정된 경우 **Issue**는 `—`
+- 트래커가 활성화된 경우, **Issue**는 이슈 링크: `[#60](https://github.com/user/repo/issues/60)`
 
 ## 표준 템플릿
 
@@ -147,44 +158,50 @@ workplan/
 
 ### 계획 생성
 
-1. 다음 순차 ID (`NNNN`) 획득
-2. `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`에 파일 생성
+**이슈 트래커 사용:**
+
+1. 먼저 이슈 생성: `gh issue create` (GitHub) 또는 `glab issue create` (GitLab)
+2. 이슈 번호 기록 (예: #60)
+3. `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md`에 파일 생성 (예: `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
+4. `Issue` 헤더 필드에 링크 기입
+
+**이슈 트래커 미사용:**
+
+1. `backlog/BACKLOG-YYYY-MM-DD-description.md`에 파일 생성
 
 ### 작업 시작
 
-1. `backlog/`에서 `coding/CODING-YYYY-MM-DD-NNNN-description.md`로 이동 (날짜 = 오늘, ID 변경 없음)
+1. `backlog/`에서 `coding/CODING-YYYY-MM-DD-...-description.md`로 이동 (날짜 = 오늘, 식별자 변경 없음)
 2. 헤더 업데이트: `상태: Coding`, `Coding: YYYY-MM-DD`
 
 ### 완료
 
-1. `coding/`에서 `done/DONE-YYYY-MM-DD-NNNN-description.md`로 이동 (날짜 = 오늘)
+1. `coding/`에서 `done/DONE-YYYY-MM-DD-...-description.md`로 이동 (날짜 = 오늘)
 2. 헤더 업데이트: `상태: Done`, `Done: YYYY-MM-DD`
 
 ### backlog으로 되돌리기
 
-1. `coding/`에서 `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`로 이동
+1. `coding/`에서 `backlog/BACKLOG-YYYY-MM-DD-...-description.md`로 이동
 2. 헤더 업데이트: `상태: Backlog`
 
 ## 상호 참조
 
-계획 간 참조에는 영구적인 **내부 ID** (`NNNN`)를 사용합니다:
+**이슈 트래커 사용:** 계획 간 참조에는 이슈 번호 `#N`을 사용합니다. 이는 영구적이며 자동 링크가 지원됩니다:
 
 ```markdown
-**의존성:** 계획 0001, 계획 0002
+**의존성:** #1, #2
 
-자세한 내용은 계획 0003을 참조.
+자세한 내용은 #3을 참조.
 ```
 
-**규칙:** 전체 파일 이름으로 계획을 참조하지 않음 (전환마다 변경됨). 항상 내부 ID를 사용.
+**이슈 트래커 미사용:** 설명적인 이름으로 계획을 참조합니다:
 
-## 다음 ID 획득
-
-```bash
-# 모든 하위 폴더에서 가장 큰 NNNN 찾기
-ls workplan/{backlog,coding,done}/ | grep -oP '\d{4}' | sort -n | tail -1
-# 결과에 1 더하기
+```markdown
+**의존성:** user-auth-setup, api-rate-limiting
 ```
+
+**규칙:** 전체 파일 이름으로 계획을 참조하지 않음 (전환마다 변경됨).
 
 ## 초안 (드래프트)
 
-초안은 `draft/`에 `DRAFT-YYYY-MM-DD-description.md` 형식으로 저장됩니다. BACKLOG→CODING→DONE 워크플로를 따르지 않으며 순차 ID가 없습니다. 아이디어 뱅크 역할을 합니다: 계획 초안, 기술적 결정, 탐색적 메모. 초안이 충분히 성숙하면 `backlog/`에 정식 계획으로 승격됩니다.
+초안은 `draft/`에 `DRAFT-YYYY-MM-DD-description.md` 형식으로 저장됩니다. BACKLOG→CODING→DONE 워크플로를 따르지 않으며 이슈 식별자가 없습니다. 아이디어 뱅크 역할을 합니다: 계획 초안, 기술적 결정, 탐색적 메모. 초안이 충분히 성숙하면 `backlog/`에 정식 계획으로 승격됩니다.

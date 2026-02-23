@@ -7,7 +7,7 @@
 **Bereich:** allgemein
 **Issue:** —
 
-> Diese Datei ist ein Referenzbeispiel. ID `0000` ist für Templates reserviert. Verwenden Sie beim Erstellen des ersten echten Plans die ID `0001`.
+> Diese Datei ist ein Referenzbeispiel. Wenn ein Issue-Tracker konfiguriert ist, enthalten Pläne die Issue-Nummer im Dateinamen (z.B. `BACKLOG-2026-01-15-i0001-description.md`). Ohne Tracker ist das Format `BACKLOG-YYYY-MM-DD-description.md`.
 
 ## Fortschritt
 

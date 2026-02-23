@@ -71,13 +71,15 @@ workplan/
 - `backlog/` — 未着手の計画（優先順位付け済み、作業準備完了）
 - `coding/` — 進行中の計画
 - `done/` — 完了した計画（履歴アーカイブ）
-- `draft/` — 下書き、アイデア、アーキテクチャ決定事項（ワークフローやIDなし）
+- `draft/` — 下書き、アイデア、アーキテクチャ決定事項（ワークフローや識別子なし）
 
 **ワークフロー：** `backlog/ -> coding/ -> done/`
 
-**ファイル命名規則：** `TYPE-YYYY-MM-DD-NNNN-description.md`
+**ファイル命名規則：**
+- Issueトラッカーあり：`TYPE-YYYY-MM-DD-iNNNN-description.md`
+- Issueトラッカーなし：`TYPE-YYYY-MM-DD-description.md`
 - TYPE：`BACKLOG`、`CODING`、`DONE`
-- NNNN：永続的な連番ID（フォルダ間の移動時も変更なし）
+- iNNNN：GitHub/GitLabのIssue番号（トラッカー設定時）
 
 完全なテンプレートと詳細ルールは `workplan/README.md` を参照してください。
 

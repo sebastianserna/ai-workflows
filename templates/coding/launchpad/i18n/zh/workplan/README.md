@@ -12,27 +12,37 @@
 
 ## 文件命名格式
 
+命名格式取决于是否配置了 Issue 跟踪器：
+
+**使用 Issue 跟踪器（GitHub / GitLab）：**
+
 ```
-TYPE-YYYY-MM-DD-NNNN-description.md
+TYPE-YYYY-MM-DD-iNNNN-description.md
+```
+
+**不使用 Issue 跟踪器（无）：**
+
+```
+TYPE-YYYY-MM-DD-description.md
 ```
 
 | 字段 | 描述 | 示例 |
 |------|------|------|
 | `TYPE` | 状态：`BACKLOG`、`CODING`、`DONE`、`DRAFT` | `BACKLOG` |
 | `YYYY-MM-DD` | 转换到当前状态的日期 | `2026-01-15` |
-| `NNNN` | 内部顺序 ID，4 位补零 | `0001` |
+| `iNNNN` | Issue 编号，4 位补零加 `i` 前缀（仅在配置跟踪器时使用） | `i0060` |
 | `description` | kebab-case 短名称 | `user-auth-setup` |
 
-### 内部 ID（`NNNN`）
+### Issue 标识符（`iNNNN`）
 
-项目专用的递增计数器。获取下一个 ID：
+当配置了 Issue 跟踪器（GitHub 或 GitLab）时，每个计划**必须**有一个对应的 Issue。Issue 编号成为计划的唯一标识符：
 
-1. 在所有子文件夹中查找最大的 `NNNN`（`backlog/`、`coding/`、`done/`）
-2. 加 1
+- `i` 前缀用于区分 Issue 编号与其他数字字段
+- 补零至 4 位：Issue #7 → `i0007`，Issue #123 → `i0123`
+- 标识符是**永久的** — 即使计划在状态之间移动也不会改变
+- GitHub/GitLab 保证原子唯一性，消除协作环境中的冲突风险
 
-ID 是**永久的** — 即使计划的状态或名称改变也不会变。
-
-> **保留：** ID `0000` 保留用于示例/模板文件。第一个真实计划必须使用 `0001`。
+**当 Issue 跟踪器设为"无"时**，计划没有标识符字段。文件名格式为 `TYPE-YYYY-MM-DD-description.md`。
 
 ### 日期规则
 
@@ -72,6 +82,7 @@ workplan/
 - 状态必须与文件名前缀匹配
 - 日期记录每次转换发生的时间（`—` 表示不适用）
 - 如果 Issue 跟踪器配置为"无"，**Issue** 为 `—`
+- 当跟踪器处于活动状态时，**Issue** 链接到 Issue：`[#60](https://github.com/user/repo/issues/60)`
 
 ## 标准模板
 
@@ -147,44 +158,50 @@ workplan/
 
 ### 创建计划
 
-1. 获取下一个顺序 ID（`NNNN`）
-2. 在 `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md` 中创建文件
+**使用 Issue 跟踪器：**
+
+1. 首先创建 Issue：`gh issue create`（GitHub）或 `glab issue create`（GitLab）
+2. 记录 Issue 编号（例如 #60）
+3. 在 `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` 中创建文件（例如 `BACKLOG-2026-01-15-i0060-user-auth-setup.md`）
+4. 在 `Issue` 标题字段中填写链接
+
+**不使用 Issue 跟踪器：**
+
+1. 在 `backlog/BACKLOG-YYYY-MM-DD-description.md` 中创建文件
 
 ### 开始工作
 
-1. 从 `backlog/` 移动到 `coding/CODING-YYYY-MM-DD-NNNN-description.md`（日期 = 今天，ID 不变）
+1. 从 `backlog/` 移动到 `coding/CODING-YYYY-MM-DD-...-description.md`（日期 = 今天，标识符不变）
 2. 更新标题：`状态：Coding`，`Coding：YYYY-MM-DD`
 
 ### 完成
 
-1. 从 `coding/` 移动到 `done/DONE-YYYY-MM-DD-NNNN-description.md`（日期 = 今天）
+1. 从 `coding/` 移动到 `done/DONE-YYYY-MM-DD-...-description.md`（日期 = 今天）
 2. 更新标题：`状态：Done`，`Done：YYYY-MM-DD`
 
 ### 退回到 backlog
 
-1. 从 `coding/` 移动到 `backlog/BACKLOG-YYYY-MM-DD-NNNN-description.md`
+1. 从 `coding/` 移动到 `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
 2. 更新标题：`状态：Backlog`
 
 ## 交叉引用
 
-计划之间使用**内部 ID**（`NNNN`）相互引用，该 ID 是永久的：
+**使用 Issue 跟踪器：** 计划之间使用 Issue 编号 `#N` 相互引用，该编号是永久的并支持自动链接：
 
 ```markdown
-**依赖：** 计划 0001、计划 0002
+**依赖：** #1、#2
 
-详见计划 0003。
+详见 #3。
 ```
 
-**规则：** 绝不使用完整文件名引用计划（每次转换都会改变）。始终使用内部 ID。
+**不使用 Issue 跟踪器：** 使用描述性名称引用计划：
 
-## 获取下一个 ID
-
-```bash
-# 在所有子文件夹中查找最大的 NNNN
-ls workplan/{backlog,coding,done}/ | grep -oP '\d{4}' | sort -n | tail -1
-# 结果加 1
+```markdown
+**依赖：** user-auth-setup、api-rate-limiting
 ```
+
+**规则：** 绝不使用完整文件名引用计划（每次转换都会改变）。
 
 ## 草稿
 
-草稿存放在 `draft/` 中，格式为 `DRAFT-YYYY-MM-DD-description.md`。不遵循 BACKLOG→CODING→DONE 工作流，没有顺序 ID。作为想法库使用：计划草稿、技术决策、探索性笔记。当草稿足够成熟时，提升到 `backlog/` 成为正式计划。
+草稿存放在 `draft/` 中，格式为 `DRAFT-YYYY-MM-DD-description.md`。不遵循 BACKLOG→CODING→DONE 工作流，没有 Issue 标识符。作为想法库使用：计划草稿、技术决策、探索性笔记。当草稿足够成熟时，提升到 `backlog/` 成为正式计划。

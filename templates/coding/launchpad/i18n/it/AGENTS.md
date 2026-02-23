@@ -72,13 +72,15 @@ La cartella `workplan/` gestisce il ciclo di vita delle attività del progetto.
 - `backlog/` — Piani in attesa, prioritizzati e pronti per essere lavorati
 - `coding/` — Piani in corso di sviluppo
 - `done/` — Piani completati (archivio storico)
-- `draft/` — Bozze, idee e decisioni architetturali (senza workflow né ID)
+- `draft/` — Bozze, idee e decisioni architetturali (senza workflow né identificatore)
 
 **Workflow:** `backlog/ -> coding/ -> done/`
 
-**Formato dei nomi file:** `TIPO-YYYY-MM-DD-NNNN-descrizione.md`
+**Formato dei nomi file:**
+- Con issue tracker: `TIPO-YYYY-MM-DD-iNNNN-descrizione.md`
+- Senza issue tracker: `TIPO-YYYY-MM-DD-descrizione.md`
 - TIPO: `BACKLOG`, `CODING`, `DONE`
-- NNNN: ID sequenziale permanente (non cambia durante gli spostamenti tra cartelle)
+- iNNNN: numero di issue GitHub/GitLab, zero-padded con prefisso `i` (quando il tracker è configurato)
 
 Consultare `workplan/README.md` per il template completo e le regole dettagliate.
 

@@ -71,13 +71,15 @@ workplan/
 - `backlog/` — 待处理计划，已排序并准备执行
 - `coding/` — 正在进行的计划
 - `done/` — 已完成的计划（历史归档）
-- `draft/` — 草稿、想法和架构决策（无工作流或 ID）
+- `draft/` — 草稿、想法和架构决策（无工作流或标识符）
 
 **工作流：** `backlog/ -> coding/ -> done/`
 
-**文件命名格式：** `TYPE-YYYY-MM-DD-NNNN-description.md`
+**文件命名格式：**
+- 使用 Issue 跟踪器：`TYPE-YYYY-MM-DD-iNNNN-description.md`
+- 不使用 Issue 跟踪器：`TYPE-YYYY-MM-DD-description.md`
 - TYPE：`BACKLOG`、`CODING`、`DONE`
-- NNNN：永久顺序 ID（在文件夹之间移动时不变）
+- iNNNN：GitHub/GitLab Issue 编号（在配置跟踪器时使用）
 
 详见 `workplan/README.md` 获取完整模板和详细规则。
 
