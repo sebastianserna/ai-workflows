@@ -1,11 +1,12 @@
-# 计划：backlog 中的示例计划
-
-**状态：** Backlog
-**Backlog：** YYYY-MM-DD
-**Coding：** —
-**Done：** —
-**领域：** 通用
-**Issue：** —
+---
+plan: "backlog 中的示例计划"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > 此文件为参考示例。当配置了 Issue 跟踪器时，计划在文件名中包含 Issue 编号（例如 `BACKLOG-2026-01-15-i0001-description.md`）。未配置跟踪器时，格式为 `BACKLOG-YYYY-MM-DD-description.md`。
 

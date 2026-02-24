@@ -4,8 +4,8 @@
 
 ## 설정
 
-**이슈 트래커:** 없음
-<!-- 옵션: GitHub | GitLab | 없음 -->
+**이슈 트래커:** none
+<!-- 옵션: GitHub | GitLab | none -->
 <!-- 활성화: "GitHub" 또는 "GitLab"으로 변경하고 저장소 설정 -->
 
 **저장소:** `사용자명/저장소명`
@@ -20,7 +20,7 @@
 TYPE-YYYY-MM-DD-iNNNN-description.md
 ```
 
-**이슈 트래커 미사용 (없음):**
+**이슈 트래커 미사용 (none):**
 
 ```
 TYPE-YYYY-MM-DD-description.md
@@ -42,7 +42,7 @@ TYPE-YYYY-MM-DD-description.md
 - 식별자는 **영구적**입니다 — 계획이 상태 간 이동해도 변경되지 않습니다
 - GitHub/GitLab이 원자적 고유성을 보장하여 협업 환경에서의 충돌 위험을 제거합니다
 
-**이슈 트래커가 "없음"인 경우**, 계획에는 식별자 세그먼트가 없습니다. 파일 이름은 단순히 `TYPE-YYYY-MM-DD-description.md`입니다.
+**이슈 트래커가 "none"인 경우**, 계획에는 식별자 세그먼트가 없습니다. 파일 이름은 단순히 `TYPE-YYYY-MM-DD-description.md`입니다.
 
 ### 날짜 규칙
 
@@ -76,24 +76,41 @@ workplan/
 - `done/RULES.md` — 보관, 완료 기준
 - `draft/RULES.md` — 아이디어 뱅크, 워크플로 없음, 이슈 식별자 없음
 
-## 표준화된 헤더
+## YAML Frontmatter
 
-```markdown
-# 계획: 설명적인 제목
+각 계획 파일은 **1행**에서 YAML frontmatter 블록으로 시작해야 합니다 (시작 `---` 앞에 빈 줄 없음). GitHub은 이를 메타데이터 테이블로 렌더링합니다.
 
-**상태:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**도메인:** 일반
-**Issue:** —
+```yaml
+---
+plan: "설명적인 제목"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**헤더 규칙:**
-- 상태는 파일 이름 접두사와 일치해야 함
-- 날짜는 각 전환이 발생한 시점을 기록 (`—`은 해당 없음)
-- 이슈 트래커가 "없음"으로 설정된 경우 **Issue**는 `—`
-- 트래커가 활성화된 경우, **Issue**는 이슈 링크: `[#60](https://github.com/user/repo/issues/60)`
+**Frontmatter 필드:**
+
+| 필드 | 설명 | 값 |
+|------|------|-----|
+| `plan` | 간결한 설명적 제목 | 자유 텍스트 |
+| `state` | 현재 상태 (파일 이름 접두사와 일치해야 함) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | 이슈 식별자 (`iNNNN`) 또는 비어 있음 | `"i0060"`, `""` |
+| `domain` | 기능 도메인 | `general`, 또는 프로젝트별 |
+| `backlog` | 계획 생성 날짜 | `"2026-01-15"`, `""` |
+| `coding` | 작업 시작 날짜 | `"2026-01-20"`, `""` |
+| `done` | 완료 날짜 | `"2026-02-01"`, `""` |
+
+**Frontmatter 규칙:**
+- 첫 번째 `---`는 정확히 1행에 위치해야 하며 앞에 빈 줄이 없어야 함
+- `state` 값은 파일 이름 접두사와 일치해야 함 (소문자)
+- 이슈 트래커가 "none"인 경우 **issue**는 `""`
+- 트래커가 활성화된 경우 **issue**에 식별자 포함: `"i0060"`
+- 초안은 `issue`와 날짜 필드를 완전히 생략
+- 날짜 필드는 각 전환이 발생한 시점을 기록 (`""`은 아직 도달하지 않은 경우)
 
 ## 표준 템플릿
 
@@ -106,21 +123,22 @@ workplan/
 
 ### 섹션 순서
 
-헤더 → 진행 → 목표 → 배경 → 구현 → 검증 → 리스크
+Frontmatter → 진행 → 목표 → 배경 → 구현 → 검증 → 리스크
 
 선택적 섹션은 비워두지 않고 **생략**합니다.
 
 ### 템플릿
 
 ```markdown
-# 계획: 설명적인 제목
-
-**상태:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**도메인:** 일반
-**Issue:** —
+---
+plan: "설명적인 제목"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## 진행
 
@@ -158,7 +176,7 @@ workplan/
 
 ### 규칙
 
-1. **진행은 항상 헤더 바로 뒤에**, 끝에 두지 않음
+1. **진행은 항상 frontmatter 바로 뒤에**, 끝에 두지 않음
 2. 스텝은 단계별로 그룹화 (`### 단계 N: 이름`)
 3. 각 스텝은 구체적이고 검증 가능해야 함 (모호하지 않게)
 4. 기술적 세부사항은 구현에, 요약은 진행에 기재
@@ -174,7 +192,7 @@ workplan/
 1. 먼저 이슈 생성: `gh issue create` (GitHub) 또는 `glab issue create` (GitLab)
 2. 이슈 번호 기록 (예: #60)
 3. `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md`에 파일 생성 (예: `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. `Issue` 헤더 필드에 링크 기입
+4. frontmatter의 `issue` 필드에 식별자 기입
 
 **이슈 트래커 미사용:**
 
@@ -183,17 +201,17 @@ workplan/
 ### 작업 시작
 
 1. `backlog/`에서 `coding/CODING-YYYY-MM-DD-...-description.md`로 이동 (날짜 = 오늘, 식별자 변경 없음)
-2. 헤더 업데이트: `상태: Coding`, `Coding: YYYY-MM-DD`
+2. frontmatter 업데이트: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### 완료
 
 1. `coding/`에서 `done/DONE-YYYY-MM-DD-...-description.md`로 이동 (날짜 = 오늘)
-2. 헤더 업데이트: `상태: Done`, `Done: YYYY-MM-DD`
+2. frontmatter 업데이트: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### backlog으로 되돌리기
 
 1. `coding/`에서 `backlog/BACKLOG-YYYY-MM-DD-...-description.md`로 이동
-2. 헤더 업데이트: `상태: Backlog`
+2. frontmatter 업데이트: `state: "backlog"`, `coding: ""`
 
 ## 상호 참조
 

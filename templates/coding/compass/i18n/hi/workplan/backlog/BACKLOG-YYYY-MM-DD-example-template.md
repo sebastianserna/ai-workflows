@@ -1,11 +1,12 @@
-# योजना: बैकलॉग में उदाहरण योजना
-
-**स्थिति:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**डोमेन:** सामान्य
-**Issue:** —
+---
+plan: "बैकलॉग में उदाहरण योजना"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > यह फ़ाइल एक संदर्भ उदाहरण है। जब कोई issue ट्रैकर कॉन्फ़िगर किया गया है, तो योजनाओं में फ़ाइल नाम में issue नंबर शामिल होता है (जैसे, `BACKLOG-2026-01-15-i0001-description.md`)। ट्रैकर के बिना, प्रारूप `BACKLOG-YYYY-MM-DD-description.md` होता है।
 

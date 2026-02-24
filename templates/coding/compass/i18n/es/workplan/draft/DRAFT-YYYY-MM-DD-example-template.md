@@ -1,6 +1,10 @@
-# Draft: Ejemplo de borrador
+---
+plan: "Ejemplo de borrador"
+state: "draft"
+domain: "general"
+---
 
-> Este archivo es un ejemplo de referencia. Los drafts no tienen identificador de issue ni siguen el flujo backlog → coding → done. Son ideas, decisiones técnicas o notas exploratorias.
+> Este archivo es un ejemplo de referencia. Los borradores no tienen identificador de issue ni siguen el flujo backlog → coding → done. Son ideas, decisiones técnicas o notas exploratorias.
 
 ## Contexto
 
@@ -18,4 +22,4 @@ Descripción del problema o la idea que se está explorando.
 
 ## Decisión
 
-Cuando el draft madure, se promueve a `backlog/` como plan formal.
+Cuando el borrador madure, se promueve a `backlog/` como plan formal.

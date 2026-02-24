@@ -1,4 +1,8 @@
-# Entwurf: Beispielentwurf
+---
+plan: "Beispielentwurf"
+state: "draft"
+domain: "general"
+---
 
 > Diese Datei ist ein Referenzbeispiel. Entwürfe haben keinen Issue-Identifikator und folgen nicht dem backlog → coding → done Workflow. Sie sind Ideen, technische Entscheidungen oder explorative Notizen.
 

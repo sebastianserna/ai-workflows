@@ -25,7 +25,7 @@ La data riflette quando il piano è stato completato.
 
 ## Regole chiave
 
-- Ogni piano deve avere l'intestazione standardizzata con `Stato: Done`
+- Ogni piano deve avere il YAML frontmatter con `state: "done"` (vedere `workplan/README.md` per il formato)
 - Tutte le caselle di avanzamento devono essere spuntate
 - I piani completati generalmente non vengono modificati
 - Vedere `workplan/README.md` per il riferimento completo

@@ -4,8 +4,8 @@
 
 ## 設定
 
-**Issueトラッカー：** なし
-<!-- オプション：GitHub | GitLab | なし -->
+**Issueトラッカー：** none
+<!-- オプション：GitHub | GitLab | none -->
 <!-- 有効化：「GitHub」または「GitLab」に変更してリポジトリを設定 -->
 
 **リポジトリ：** `ユーザー名/リポジトリ名`
@@ -20,7 +20,7 @@
 TYPE-YYYY-MM-DD-iNNNN-description.md
 ```
 
-**Issueトラッカーなし（なし）：**
+**Issueトラッカーなし（none）：**
 
 ```
 TYPE-YYYY-MM-DD-description.md
@@ -42,7 +42,7 @@ Issueトラッカーが設定されている場合（GitHubまたはGitLab）、
 - 識別子は**永続的**です — 計画が状態間を移動しても変わりません
 - GitHub/GitLabがアトミックな一意性を保証し、協業環境での衝突リスクを排除します
 
-**Issueトラッカーが「なし」の場合**、計画には識別子セグメントがありません。ファイル名は単に `TYPE-YYYY-MM-DD-description.md` となります。
+**Issueトラッカーが「none」の場合**、計画には識別子セグメントがありません。ファイル名は単に `TYPE-YYYY-MM-DD-description.md` となります。
 
 ### 日付ルール
 
@@ -76,24 +76,41 @@ workplan/
 - `done/RULES.md` — アーカイブ、完了基準
 - `draft/RULES.md` — アイデアバンク、ワークフローなし、Issue識別子なし
 
-## 標準ヘッダー
+## YAML Frontmatter
 
-```markdown
-# 計画：説明的なタイトル
+各計画ファイルは**1行目**にYAML frontmatterブロックで始める必要があります（開始の `---` の前に空行を入れない）。GitHubはこれをメタデータテーブルとしてレンダリングします。
 
-**状態：** Backlog | Coding | Done
-**Backlog：** 2026-01-15
-**Coding：** —
-**Done：** —
-**ドメイン：** 一般
-**Issue：** —
+```yaml
+---
+plan: "説明的なタイトル"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**ヘッダールール：**
-- 状態はファイル名のプレフィックスと一致すること
-- 日付は各遷移が発生した時点を記録（`—` は該当なし）
-- Issueトラッカーが「なし」の場合、**Issue** は `—`
-- トラッカーが有効な場合、**Issue** はIssueへのリンク：`[#60](https://github.com/user/repo/issues/60)`
+**Frontmatterフィールド：**
+
+| フィールド | 説明 | 値 |
+|-----------|------|-----|
+| `plan` | 簡潔な説明的タイトル | 自由テキスト |
+| `state` | 現在の状態（ファイル名プレフィックスと一致する必要あり） | `backlog`、`coding`、`done`、`draft` |
+| `issue` | Issue識別子（`iNNNN`）または空 | `"i0060"`、`""` |
+| `domain` | 機能ドメイン | `general`、またはプロジェクト固有 |
+| `backlog` | 計画の作成日 | `"2026-01-15"`、`""` |
+| `coding` | 作業開始日 | `"2026-01-20"`、`""` |
+| `done` | 完了日 | `"2026-02-01"`、`""` |
+
+**Frontmatterルール：**
+- 最初の `---` は正確に1行目に配置し、前に空行を入れない
+- `state` の値はファイル名プレフィックスと一致する必要がある（小文字）
+- Issueトラッカーが "none" の場合、**issue** は `""`
+- トラッカーが有効な場合、**issue** に識別子を含める：`"i0060"`
+- 下書きは `issue` と日付フィールドを完全に省略する
+- 日付フィールドは各遷移が発生した時点を記録する（`""` はまだ到達していない場合）
 
 ## 標準テンプレート
 
@@ -106,21 +123,22 @@ workplan/
 
 ### セクション順序
 
-ヘッダー → 進捗 → 目的 → コンテキスト → 実装 → 検証 → リスク
+Frontmatter → 進捗 → 目的 → コンテキスト → 実装 → 検証 → リスク
 
 オプションのセクションは空にせず、**省略**します。
 
 ### テンプレート
 
 ```markdown
-# 計画：説明的なタイトル
-
-**状態：** Backlog
-**Backlog：** YYYY-MM-DD
-**Coding：** —
-**Done：** —
-**ドメイン：** 一般
-**Issue：** —
+---
+plan: "説明的なタイトル"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## 進捗
 
@@ -158,7 +176,7 @@ workplan/
 
 ### ルール
 
-1. **進捗は常にヘッダーの直後**、末尾には置かない
+1. **進捗は常にfrontmatterの直後**、末尾には置かない
 2. ステップはフェーズごとにグループ化（`### フェーズ N：名前`）
 3. 各ステップは具体的で検証可能であること（曖昧にしない）
 4. 技術的詳細は実装に、概要は進捗に記載
@@ -174,7 +192,7 @@ workplan/
 1. まずIssueを作成：`gh issue create`（GitHub）または `glab issue create`（GitLab）
 2. Issue番号を記録（例：#60）
 3. `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` にファイルを作成（例：`BACKLOG-2026-01-15-i0060-user-auth-setup.md`）
-4. `Issue` ヘッダーフィールドにリンクを記入
+4. frontmatterの `issue` フィールドに識別子を記入
 
 **Issueトラッカーなし：**
 
@@ -183,17 +201,17 @@ workplan/
 ### 作業開始
 
 1. `backlog/` から `coding/CODING-YYYY-MM-DD-...-description.md` に移動（日付 = 今日、識別子変更なし）
-2. ヘッダーを更新：`状態：Coding`、`Coding：YYYY-MM-DD`
+2. frontmatterを更新：`state: "coding"`、`coding: "YYYY-MM-DD"`
 
 ### 完了
 
 1. `coding/` から `done/DONE-YYYY-MM-DD-...-description.md` に移動（日付 = 今日）
-2. ヘッダーを更新：`状態：Done`、`Done：YYYY-MM-DD`
+2. frontmatterを更新：`state: "done"`、`done: "YYYY-MM-DD"`
 
 ### backlogに戻す
 
 1. `coding/` から `backlog/BACKLOG-YYYY-MM-DD-...-description.md` に移動
-2. ヘッダーを更新：`状態：Backlog`
+2. frontmatterを更新：`state: "backlog"`、`coding: ""`
 
 ## 相互参照
 

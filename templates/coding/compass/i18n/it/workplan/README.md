@@ -76,24 +76,41 @@ Ogni `RULES.md` contiene regole e convenzioni di nomenclatura specifiche della c
 - `done/RULES.md` — Archivio, criteri di completamento
 - `draft/RULES.md` — Banca delle idee, senza workflow, senza identificatore di issue
 
-## Intestazione standardizzata
+## YAML Frontmatter
 
-```markdown
-# Piano: Titolo descrittivo
+Ogni file di piano deve iniziare con un blocco di YAML frontmatter alla **riga 1** (nessuna riga vuota prima del `---` di apertura). GitHub lo renderizza come una tabella di metadati.
 
-**Stato:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**Dominio:** generale
-**Issue:** —
+```yaml
+---
+plan: "Titolo descrittivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Regole dell'intestazione:**
-- Lo stato deve corrispondere al prefisso del nome file
-- Le date registrano quando è avvenuta ogni transizione (`—` se non applicabile)
-- **Issue** è `—` se l'issue tracker è configurato come "none"
-- Quando il tracker è attivo, **Issue** contiene il link all'issue: `[#60](https://github.com/user/repo/issues/60)`
+**Campi del frontmatter:**
+
+| Campo | Descrizione | Valori |
+|-------|-------------|--------|
+| `plan` | Titolo descrittivo breve | Testo libero |
+| `state` | Stato attuale (deve corrispondere al prefisso del nome file) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Identificatore di issue (`iNNNN`) o vuoto | `"i0060"`, `""` |
+| `domain` | Dominio funzionale | `general`, o specifico del progetto |
+| `backlog` | Data di creazione del piano | `"2026-01-15"`, `""` |
+| `coding` | Data di inizio del lavoro | `"2026-01-20"`, `""` |
+| `done` | Data di completamento | `"2026-02-01"`, `""` |
+
+**Regole del frontmatter:**
+- Il primo `---` deve essere esattamente alla riga 1 senza righe vuote prima
+- Il valore di `state` deve corrispondere al prefisso del nome file (in minuscolo)
+- **issue** è `""` se l'issue tracker è configurato come "none"
+- Quando il tracker è attivo, **issue** contiene l'identificatore: `"i0060"`
+- Le bozze omettono i campi `issue` e delle date interamente
+- I campi data registrano quando è avvenuta ogni transizione (`""` se non ancora raggiunto)
 
 ## Template standard
 
@@ -106,21 +123,22 @@ Ogni `RULES.md` contiene regole e convenzioni di nomenclatura specifiche della c
 
 ### Ordine delle sezioni
 
-Intestazione → Avanzamento → Obiettivo → Contesto → Implementazione → Verifica → Rischi
+Frontmatter → Avanzamento → Obiettivo → Contesto → Implementazione → Verifica → Rischi
 
 Le sezioni opzionali vengono **omesse**, non lasciate vuote.
 
 ### Template
 
 ```markdown
-# Piano: Titolo descrittivo
-
-**Stato:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Dominio:** generale
-**Issue:** —
+---
+plan: "Titolo descrittivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Avanzamento
 
@@ -158,7 +176,7 @@ Solo per piani complessi.
 
 ### Regole
 
-1. **L'avanzamento viene sempre dopo l'intestazione**, mai alla fine
+1. **L'avanzamento viene sempre dopo il frontmatter**, mai alla fine
 2. Passi raggruppati per fase (`### Fase N: Nome`)
 3. Ogni passo deve essere concreto e verificabile (non generico)
 4. Dettaglio tecnico nell'Implementazione, riepilogo nell'Avanzamento
@@ -174,7 +192,7 @@ Solo per piani complessi.
 1. Creare prima l'issue: `gh issue create` (GitHub) o `glab issue create` (GitLab)
 2. Annotare il numero di issue (es. #60)
 3. Creare il file in `backlog/BACKLOG-YYYY-MM-DD-iNNNN-descrizione.md` (es. `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Compilare il campo `Issue` dell'intestazione con il link
+4. Compilare il campo `issue` del frontmatter con l'identificatore
 
 **Senza issue tracker:**
 
@@ -183,17 +201,17 @@ Solo per piani complessi.
 ### Avviare il lavoro
 
 1. Spostare da `backlog/` a `coding/CODING-YYYY-MM-DD-...-descrizione.md` (data = oggi, identificatore invariato)
-2. Aggiornare l'intestazione: `Stato: Coding`, `Coding: YYYY-MM-DD`
+2. Aggiornare il frontmatter: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Completare
 
 1. Spostare da `coding/` a `done/DONE-YYYY-MM-DD-...-descrizione.md` (data = oggi)
-2. Aggiornare l'intestazione: `Stato: Done`, `Done: YYYY-MM-DD`
+2. Aggiornare il frontmatter: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Rimettere in backlog
 
 1. Spostare da `coding/` a `backlog/BACKLOG-YYYY-MM-DD-...-descrizione.md`
-2. Aggiornare l'intestazione: `Stato: Backlog`
+2. Aggiornare il frontmatter: `state: "backlog"`, `coding: ""`
 
 ## Riferimenti incrociati
 

@@ -1,11 +1,12 @@
-# План: Пример завершённого плана
-
-**Статус:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**Область:** general
-**Issue:** —
+---
+plan: "Пример завершённого плана"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > Этот файл является справочным примером. Когда план завершён, он перемещается в `done/`, префикс переименовывается в `DONE-`, и записывается дата завершения.
 

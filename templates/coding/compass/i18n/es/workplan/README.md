@@ -4,8 +4,8 @@
 
 ## Configuración
 
-**Issue tracker:** ninguno
-<!-- Opciones: GitHub | GitLab | ninguno -->
+**Issue tracker:** none
+<!-- Opciones: GitHub | GitLab | none -->
 <!-- Para activar: cambiar a "GitHub" o "GitLab" y configurar el repositorio -->
 
 **Repositorio:** `usuario/nombre-del-repo`
@@ -20,7 +20,7 @@ El formato depende de si hay un issue tracker configurado:
 TIPO-YYYY-MM-DD-iNNNN-descripción.md
 ```
 
-**Sin issue tracker (ninguno):**
+**Sin issue tracker (none):**
 
 ```
 TIPO-YYYY-MM-DD-descripción.md
@@ -42,7 +42,7 @@ Cuando hay un issue tracker configurado (GitHub o GitLab), cada plan **debe** te
 - El identificador es **permanente** — no cambia cuando el plan se mueve entre estados
 - GitHub/GitLab garantiza unicidad atómica, eliminando riesgos de colisión en entornos colaborativos
 
-**Cuando el issue tracker es "ninguno"**, los planes no tienen segmento de identificador. El nombre de archivo es simplemente `TIPO-YYYY-MM-DD-descripción.md`.
+**Cuando el issue tracker es "none"**, los planes no tienen segmento de identificador. El nombre de archivo es simplemente `TIPO-YYYY-MM-DD-descripción.md`.
 
 ### Regla de fecha
 
@@ -76,24 +76,41 @@ Cada `RULES.md` contiene reglas y convenciones de nomenclatura específicas de l
 - `done/RULES.md` — Archivo, criterios de completado
 - `draft/RULES.md` — Banco de ideas, sin flujo de trabajo, sin identificador de issue
 
-## Header estandarizado
+## YAML Frontmatter
 
-```markdown
-# Plan: Título descriptivo
+Cada archivo de plan debe comenzar con un bloque de YAML frontmatter en la **línea 1** (sin líneas en blanco antes del `---` de apertura). GitHub lo renderiza como una tabla de metadatos.
 
-**Estado:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**Dominio:** general
-**Issue:** —
+```yaml
+---
+plan: "Título descriptivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Reglas del header:**
-- El estado debe coincidir con el prefijo del nombre de archivo
-- Las fechas registran cuándo ocurrió cada transición (`—` si no aplica)
-- **Issue** es `—` si el issue tracker está configurado como "ninguno"
-- Cuando el tracker está activo, **Issue** enlaza al issue: `[#60](https://github.com/usuario/repo/issues/60)`
+**Campos del frontmatter:**
+
+| Campo | Descripción | Valores |
+|-------|-------------|---------|
+| `plan` | Título descriptivo corto | Texto libre |
+| `state` | Estado actual (debe coincidir con el prefijo del nombre de archivo) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Identificador de issue (`iNNNN`) o vacío | `"i0060"`, `""` |
+| `domain` | Dominio funcional | `general`, o específico del proyecto |
+| `backlog` | Fecha de creación del plan | `"2026-01-15"`, `""` |
+| `coding` | Fecha de inicio del trabajo | `"2026-01-20"`, `""` |
+| `done` | Fecha de completado | `"2026-02-01"`, `""` |
+
+**Reglas del frontmatter:**
+- El primer `---` debe estar exactamente en la línea 1 sin líneas en blanco antes
+- El valor de `state` debe coincidir con el prefijo del nombre de archivo (en minúsculas)
+- **issue** es `""` si el issue tracker está configurado como "none"
+- Cuando el tracker está activo, **issue** contiene el identificador: `"i0060"`
+- Los borradores omiten los campos `issue` y de fechas por completo
+- Los campos de fecha registran cuándo ocurrió cada transición (`""` si aún no se ha alcanzado)
 
 ## Plantilla estándar
 
@@ -106,21 +123,22 @@ Cada `RULES.md` contiene reglas y convenciones de nomenclatura específicas de l
 
 ### Orden de secciones
 
-Header → Progreso → Objetivo → Contexto → Implementación → Verificación → Riesgos
+Frontmatter → Progreso → Objetivo → Contexto → Implementación → Verificación → Riesgos
 
 Secciones opcionales se **omiten**, no se dejan vacías.
 
 ### Plantilla
 
 ```markdown
-# Plan: Título descriptivo
-
-**Estado:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Dominio:** general
-**Issue:** —
+---
+plan: "Título descriptivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Progreso
 
@@ -158,7 +176,7 @@ Solo para planes complejos.
 
 ### Reglas
 
-1. **Progreso siempre después del header**, nunca al final
+1. **Progreso siempre después del frontmatter**, nunca al final
 2. Pasos agrupados por fase (`### Fase N: Nombre`)
 3. Cada paso debe ser concreto y verificable (no genérico)
 4. Detalle técnico en Implementación, resumen en Progreso
@@ -174,7 +192,7 @@ Solo para planes complejos.
 1. Crear el issue primero: `gh issue create` (GitHub) o `glab issue create` (GitLab)
 2. Anotar el número de issue (ej. #60)
 3. Crear archivo en `backlog/BACKLOG-YYYY-MM-DD-iNNNN-descripción.md` (ej. `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Completar el campo `Issue` del header con el enlace
+4. Completar el campo `issue` del frontmatter con el identificador
 
 **Sin issue tracker:**
 
@@ -183,17 +201,17 @@ Solo para planes complejos.
 ### Iniciar trabajo
 
 1. Mover de `backlog/` a `coding/CODING-YYYY-MM-DD-...-descripción.md` (fecha = hoy, identificador no cambia)
-2. Actualizar header: `Estado: Coding`, `Coding: YYYY-MM-DD`
+2. Actualizar frontmatter: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Completar
 
 1. Mover de `coding/` a `done/DONE-YYYY-MM-DD-...-descripción.md` (fecha = hoy)
-2. Actualizar header: `Estado: Done`, `Done: YYYY-MM-DD`
+2. Actualizar frontmatter: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Devolver a backlog
 
 1. Mover de `coding/` a `backlog/BACKLOG-YYYY-MM-DD-...-descripción.md`
-2. Actualizar header: `Estado: Backlog`
+2. Actualizar frontmatter: `state: "backlog"`, `coding: ""`
 
 ## Referencias cruzadas
 
@@ -213,6 +231,6 @@ Ver #3 para detalles.
 
 **Regla:** nunca referenciar un plan por su nombre de archivo completo (cambia con cada transición).
 
-## Drafts (borradores y decisiones)
+## Borradores
 
-Los drafts se almacenan en `draft/` con formato `DRAFT-YYYY-MM-DD-descripción.md`. No siguen el flujo BACKLOG→CODING→DONE, no tienen identificador de issue. Son un banco de ideas: borradores de planes, decisiones técnicas, notas exploratorias. Cuando un draft madura lo suficiente, se promueve a `backlog/` como plan formal.
+Los borradores se almacenan en `draft/` con formato `DRAFT-YYYY-MM-DD-descripción.md`. No siguen el flujo BACKLOG→CODING→DONE, no tienen identificador de issue. Son un banco de ideas: borradores de planes, decisiones técnicas, notas exploratorias. Cuando un borrador madura lo suficiente, se promueve a `backlog/` como plan formal.

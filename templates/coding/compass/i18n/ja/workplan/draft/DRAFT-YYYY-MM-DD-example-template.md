@@ -1,4 +1,8 @@
-# 下書き：下書きの例
+---
+plan: "下書きの例"
+state: "draft"
+domain: "general"
+---
 
 > このファイルは参考例です。下書きにはIssue識別子がなく、backlog → coding → done のワークフローに従いません。アイデア、技術的決定事項、探索的メモです。
 

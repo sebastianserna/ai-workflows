@@ -1,13 +1,14 @@
-# Plan: Beispielplan in Bearbeitung
+---
+plan: "Beispielplan in Bearbeitung"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**Status:** Coding
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** —
-**Bereich:** allgemein
-**Issue:** —
-
-> Diese Datei ist ein Referenzbeispiel. Wenn ein Plan von `backlog/` nach `coding/` verschoben wird, wird das Präfix in `CODING-` umbenannt und Datum sowie Header werden aktualisiert.
+> Diese Datei ist ein Referenzbeispiel. Wenn ein Plan von `backlog/` nach `coding/` verschoben wird, wird das Präfix in `CODING-` umbenannt und Datum sowie Frontmatter werden aktualisiert.
 
 ## Fortschritt
 

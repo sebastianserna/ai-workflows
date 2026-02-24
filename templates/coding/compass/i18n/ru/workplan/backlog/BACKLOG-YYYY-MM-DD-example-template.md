@@ -1,11 +1,12 @@
-# План: Пример плана в backlog
-
-**Статус:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Область:** general
-**Issue:** —
+---
+plan: "Пример плана в бэклоге"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > Этот файл является справочным примером. Когда трекер задач настроен, планы включают номер задачи в имени файла (например, `BACKLOG-2026-01-15-i0001-description.md`). Без трекера формат: `BACKLOG-YYYY-MM-DD-description.md`.
 

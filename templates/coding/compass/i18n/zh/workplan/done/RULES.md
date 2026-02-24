@@ -25,7 +25,7 @@ DONE-YYYY-MM-DD-description.md
 
 ## 关键规则
 
-- 每个计划必须有标准化标题，包含 `状态：Done`
+- 每个计划必须有 YAML frontmatter，包含 `state: "done"`（参见 `workplan/README.md` 了解格式）
 - 所有进度复选框都应被勾选
 - 已完成的计划通常不应被修改
 - 参见 `workplan/README.md` 获取完整参考

@@ -25,7 +25,7 @@ La data riflette quando il piano è stato creato.
 
 ## Regole chiave
 
-- Ogni piano deve avere l'intestazione standardizzata con `Stato: Backlog`
+- Ogni piano deve avere il YAML frontmatter con `state: "backlog"` (vedere `workplan/README.md` per il formato)
 - **Se un issue tracker è configurato**, creare prima l'issue (`gh issue create`, `glab issue create`, ecc.) e usare il numero di issue nel nome del file (`iNNNN`)
 - Per avviare il lavoro: spostare in `coding/`, rinominare il prefisso in `CODING`, aggiornare data e intestazione
 - I piani possono anche essere riportati qui da `coding/` se messi in pausa

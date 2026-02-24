@@ -18,6 +18,7 @@ Les brouillons ne portent **jamais** d'identifiant d'issue, quelle que soit la c
 
 ## Regles cles
 
+- Chaque brouillon doit avoir le YAML frontmatter avec `state: "draft"` (voir `workplan/README.md` pour le format)
 - Les brouillons ne suivent **pas** le workflow BACKLOG → CODING → DONE
 - Quand un brouillon est suffisamment mur, il est promu en `backlog/` comme plan formel
 - Voir `workplan/README.md` pour la reference complete

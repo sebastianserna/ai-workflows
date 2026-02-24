@@ -25,7 +25,7 @@ Das Datum spiegelt den Zeitpunkt der Fertigstellung wider.
 
 ## Wichtige Regeln
 
-- Jeder Plan muss den standardisierten Header mit `Status: Done` haben
+- Jeder Plan muss YAML Frontmatter mit `state: "done"` haben (siehe `workplan/README.md` für das Format)
 - Alle Fortschritts-Checkboxen sollten angehakt sein
 - Abgeschlossene Pläne sollten grundsätzlich nicht verändert werden
 - Siehe `workplan/README.md` für die vollständige Referenz

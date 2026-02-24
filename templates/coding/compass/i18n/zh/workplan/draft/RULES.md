@@ -18,6 +18,7 @@ DRAFT-YYYY-MM-DD-description.md
 
 ## 关键规则
 
+- 每个草稿必须有 YAML frontmatter，包含 `state: "draft"`（参见 `workplan/README.md` 了解格式）
 - 草稿**不**遵循 BACKLOG → CODING → DONE 工作流
 - 当草稿成熟时，将其提升到 `backlog/` 成为正式计划
 - 参见 `workplan/README.md` 获取完整参考

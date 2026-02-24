@@ -1,4 +1,8 @@
-# 草稿：草稿示例
+---
+plan: "草稿示例"
+state: "draft"
+domain: "general"
+---
 
 > 此文件为参考示例。草稿没有 Issue 标识符，不遵循 backlog → coding → done 工作流。它们是想法、技术决策或探索性笔记。
 

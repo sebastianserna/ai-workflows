@@ -25,7 +25,7 @@ BACKLOG-YYYY-MM-DD-description.md
 
 ## 关键规则
 
-- 每个计划必须有标准化标题，包含 `状态：Backlog`
+- 每个计划必须有 YAML frontmatter，包含 `state: "backlog"`（参见 `workplan/README.md` 了解格式）
 - **如果配置了 Issue 跟踪器**，先创建 Issue（`gh issue create`、`glab issue create` 等），然后在文件名中使用 Issue 编号（`iNNNN`）
 - 开始工作：移动到 `coding/`，将前缀重命名为 `CODING`，更新日期和标题
 - 计划也可以从 `coding/` 暂停后退回到此处

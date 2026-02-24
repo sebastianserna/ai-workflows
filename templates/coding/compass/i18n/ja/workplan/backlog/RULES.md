@@ -25,7 +25,7 @@ BACKLOG-YYYY-MM-DD-description.md
 
 ## 主要ルール
 
-- 各計画には `状態：Backlog` を含む標準ヘッダーが必要
+- 各計画には `state: "backlog"` を含むYAML frontmatterが必要（形式は `workplan/README.md` を参照）
 - **Issueトラッカーが設定されている場合**、まずIssueを作成（`gh issue create`、`glab issue create` 等）し、ファイル名にIssue番号を使用（`iNNNN`）
 - 作業開始時：`coding/` に移動、プレフィックスを `CODING` に変更、日付とヘッダーを更新
 - 計画は一時停止の場合 `coding/` からここに戻すこともできる

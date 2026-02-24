@@ -1,13 +1,14 @@
-# Plan: Beispiel eines abgeschlossenen Plans
+---
+plan: "Beispiel eines abgeschlossenen Plans"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
-**Status:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**Bereich:** allgemein
-**Issue:** —
-
-> Diese Datei ist ein Referenzbeispiel. Wenn ein Plan abgeschlossen wird, wird er nach `done/` verschoben, das Präfix wird in `DONE-` umbenannt und das Abschlussdatum wird erfasst.
+> Diese Datei ist ein Referenzbeispiel. Wenn ein Plan abgeschlossen wird, wird er nach `done/` verschoben, das Präfix wird in `DONE-` umbenannt und das Abschlussdatum wird im Frontmatter erfasst.
 
 ## Fortschritt
 

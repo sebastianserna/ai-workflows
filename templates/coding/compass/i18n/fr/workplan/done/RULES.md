@@ -25,7 +25,7 @@ La date reflete le moment ou le plan a ete termine.
 
 ## Regles cles
 
-- Chaque plan doit avoir l'en-tete standardise avec `Etat : Done`
+- Chaque plan doit avoir le YAML frontmatter avec `state: "done"` (voir `workplan/README.md` pour le format)
 - Toutes les cases a cocher de progression doivent etre cochees
 - Les plans termines ne doivent generalement pas etre modifies
 - Voir `workplan/README.md` pour la reference complete

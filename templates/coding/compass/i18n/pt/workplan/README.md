@@ -76,24 +76,41 @@ Cada `RULES.md` contém regras e convenções de nomenclatura específicas da pa
 - `done/RULES.md` — Arquivo, critérios de conclusão
 - `draft/RULES.md` — Banco de ideias, sem workflow, sem identificador de issue
 
-## Cabeçalho padronizado
+## YAML Frontmatter
 
-```markdown
-# Plano: Título descritivo
+Cada arquivo de plano deve começar com um bloco de YAML frontmatter na **linha 1** (sem linhas em branco antes do `---` de abertura). O GitHub renderiza isso como uma tabela de metadados.
 
-**Estado:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**Domínio:** geral
-**Issue:** —
+```yaml
+---
+plan: "Título descritivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Regras do cabeçalho:**
-- O estado deve corresponder ao prefixo do nome do arquivo
-- As datas registram quando cada transição ocorreu (`—` se não aplicável)
-- **Issue** é `—` se o issue tracker estiver configurado como "none"
-- Quando o tracker está ativo, **Issue** contém o link para a issue: `[#60](https://github.com/user/repo/issues/60)`
+**Campos do frontmatter:**
+
+| Campo | Descrição | Valores |
+|-------|-----------|---------|
+| `plan` | Título descritivo curto | Texto livre |
+| `state` | Estado atual (deve corresponder ao prefixo do nome do arquivo) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Identificador de issue (`iNNNN`) ou vazio | `"i0060"`, `""` |
+| `domain` | Domínio funcional | `general`, ou específico do projeto |
+| `backlog` | Data de criação do plano | `"2026-01-15"`, `""` |
+| `coding` | Data de início do trabalho | `"2026-01-20"`, `""` |
+| `done` | Data de conclusão | `"2026-02-01"`, `""` |
+
+**Regras do frontmatter:**
+- O primeiro `---` deve estar exatamente na linha 1 sem linhas em branco antes
+- O valor de `state` deve corresponder ao prefixo do nome do arquivo (em minúsculas)
+- **issue** é `""` se o issue tracker estiver configurado como "none"
+- Quando o tracker está ativo, **issue** contém o identificador: `"i0060"`
+- Rascunhos omitem os campos `issue` e de datas por completo
+- Os campos de data registram quando cada transição ocorreu (`""` se ainda não alcançado)
 
 ## Template padrão
 
@@ -106,21 +123,22 @@ Cada `RULES.md` contém regras e convenções de nomenclatura específicas da pa
 
 ### Ordem das seções
 
-Cabeçalho → Progresso → Objetivo → Contexto → Implementação → Verificação → Riscos
+Frontmatter → Progresso → Objetivo → Contexto → Implementação → Verificação → Riscos
 
 Seções opcionais são **omitidas**, não deixadas vazias.
 
 ### Template
 
 ```markdown
-# Plano: Título descritivo
-
-**Estado:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Domínio:** geral
-**Issue:** —
+---
+plan: "Título descritivo"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Progresso
 
@@ -158,7 +176,7 @@ Apenas para planos complexos.
 
 ### Regras
 
-1. **Progresso sempre após o cabeçalho**, nunca no final
+1. **Progresso sempre após o frontmatter**, nunca no final
 2. Passos agrupados por fase (`### Fase N: Nome`)
 3. Cada passo deve ser concreto e verificável (não genérico)
 4. Detalhe técnico na Implementação, resumo no Progresso
@@ -174,7 +192,7 @@ Apenas para planos complexos.
 1. Criar a issue primeiro: `gh issue create` (GitHub) ou `glab issue create` (GitLab)
 2. Anotar o número da issue (ex.: #60)
 3. Criar arquivo em `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (ex.: `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Preencher o campo `Issue` do cabeçalho com o link
+4. Preencher o campo `issue` do frontmatter com o identificador
 
 **Sem issue tracker:**
 
@@ -183,17 +201,17 @@ Apenas para planos complexos.
 ### Iniciar trabalho
 
 1. Mover de `backlog/` para `coding/CODING-YYYY-MM-DD-...-description.md` (data = hoje, identificador inalterado)
-2. Atualizar cabeçalho: `Estado: Coding`, `Coding: YYYY-MM-DD`
+2. Atualizar frontmatter: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Concluir
 
 1. Mover de `coding/` para `done/DONE-YYYY-MM-DD-...-description.md` (data = hoje)
-2. Atualizar cabeçalho: `Estado: Done`, `Done: YYYY-MM-DD`
+2. Atualizar frontmatter: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Retornar ao backlog
 
 1. Mover de `coding/` para `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
-2. Atualizar cabeçalho: `Estado: Backlog`
+2. Atualizar frontmatter: `state: "backlog"`, `coding: ""`
 
 ## Referências cruzadas
 

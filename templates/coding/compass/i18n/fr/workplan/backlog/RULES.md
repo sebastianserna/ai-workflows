@@ -25,7 +25,7 @@ La date reflete le moment ou le plan a ete cree.
 
 ## Regles cles
 
-- Chaque plan doit avoir l'en-tete standardise avec `Etat : Backlog`
+- Chaque plan doit avoir le YAML frontmatter avec `state: "backlog"` (voir `workplan/README.md` pour le format)
 - **Si un issue tracker est configure**, creer d'abord l'issue (`gh issue create`, `glab issue create`, etc.) et utiliser le numero d'issue dans le nom de fichier (`iNNNN`)
 - Pour demarrer le travail : deplacer vers `coding/`, renommer le prefixe en `CODING`, mettre a jour la date et l'en-tete
 - Les plans peuvent egalement etre renvoyes ici depuis `coding/` en cas de pause

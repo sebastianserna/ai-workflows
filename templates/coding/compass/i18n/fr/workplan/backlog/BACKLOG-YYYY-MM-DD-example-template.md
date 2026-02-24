@@ -1,11 +1,12 @@
-# Plan : Exemple de plan en backlog
-
-**Etat :** Backlog
-**Backlog :** YYYY-MM-DD
-**Coding :** —
-**Done :** —
-**Domaine :** general
-**Issue :** —
+---
+plan: "Exemple de plan en backlog"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > Ce fichier est un exemple de reference. Lorsqu'un issue tracker est configure, les plans incluent le numero d'issue dans le nom de fichier (ex. `BACKLOG-2026-01-15-i0001-description.md`). Sans tracker, le format est `BACKLOG-YYYY-MM-DD-description.md`.
 

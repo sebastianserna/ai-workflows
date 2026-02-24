@@ -25,10 +25,10 @@ La data riflette quando il lavoro è iniziato.
 
 ## Regole chiave
 
-- Ogni piano deve avere l'intestazione standardizzata con `Stato: Coding`
+- Ogni piano deve avere il YAML frontmatter con `state: "coding"` (vedere `workplan/README.md` per il formato)
 - Aggiornare le caselle di avanzamento man mano che i passi vengono completati
-- Al termine: spostare in `done/`, rinominare il prefisso in `DONE`, aggiornare data e intestazione
-- Per mettere in pausa: spostare in `backlog/`, rinominare il prefisso in `BACKLOG`, aggiornare l'intestazione
+- Al termine: spostare in `done/`, rinominare il prefisso in `DONE`, aggiornare data e frontmatter
+- Per mettere in pausa: spostare in `backlog/`, rinominare il prefisso in `BACKLOG`, aggiornare il frontmatter
 - Vedere `workplan/README.md` per il riferimento completo
 
 ## Vedi anche

@@ -18,6 +18,7 @@ DRAFT-YYYY-MM-DD-description.md
 
 ## प्रमुख नियम
 
+- प्रत्येक प्रारूप में `state: "draft"` के साथ YAML frontmatter होना चाहिए (प्रारूप के लिए `workplan/README.md` देखें)
 - प्रारूप BACKLOG → CODING → DONE वर्कफ़्लो का पालन **नहीं** करते
 - जब कोई प्रारूप परिपक्व हो जाता है, तो इसे `backlog/` में औपचारिक योजना के रूप में प्रोन्नत किया जाता है
 - पूर्ण संदर्भ के लिए `workplan/README.md` देखें

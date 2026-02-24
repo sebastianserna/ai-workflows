@@ -1,13 +1,14 @@
-# 계획: 진행 중인 예시 계획
+---
+plan: "진행 중인 예시 계획"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**상태:** Coding
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** —
-**도메인:** 일반
-**Issue:** —
-
-> 이 파일은 참고 예시입니다. 계획이 `backlog/`에서 `coding/`으로 이동하면 접두사가 `CODING-`으로 변경되고 날짜와 헤더가 업데이트됩니다.
+> 이 파일은 참고 예시입니다. 계획이 `backlog/`에서 `coding/`으로 이동하면 접두사가 `CODING-`으로 변경되고 날짜와 frontmatter가 업데이트됩니다.
 
 ## 진행
 

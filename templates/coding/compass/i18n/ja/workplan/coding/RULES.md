@@ -25,10 +25,10 @@ CODING-YYYY-MM-DD-description.md
 
 ## 主要ルール
 
-- 各計画には `状態：Coding` を含む標準ヘッダーが必要
+- 各計画には `state: "coding"` を含むYAML frontmatterが必要（形式は `workplan/README.md` を参照）
 - ステップの完了に伴い進捗チェックボックスを更新
-- 完了時：`done/` に移動、プレフィックスを `DONE` に変更、日付とヘッダーを更新
-- 一時停止時：`backlog/` に戻し、プレフィックスを `BACKLOG` に変更、ヘッダーを更新
+- 完了時：`done/` に移動、プレフィックスを `DONE` に変更、日付とfrontmatterを更新
+- 一時停止時：`backlog/` に戻し、プレフィックスを `BACKLOG` に変更、frontmatterを更新
 - 完全なリファレンスは `workplan/README.md` を参照
 
 ## 関連項目

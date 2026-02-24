@@ -1,11 +1,12 @@
-# योजना: पूर्ण योजना का उदाहरण
-
-**स्थिति:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**डोमेन:** सामान्य
-**Issue:** —
+---
+plan: "पूर्ण योजना का उदाहरण"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > यह फ़ाइल एक संदर्भ उदाहरण है। जब कोई योजना पूर्ण होती है, तो इसे `done/` में स्थानांतरित किया जाता है, प्रीफ़िक्स `DONE-` में बदल जाता है, और पूर्णता तिथि दर्ज की जाती है।
 

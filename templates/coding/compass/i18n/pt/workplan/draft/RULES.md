@@ -18,6 +18,7 @@ Rascunhos **nunca** carregam um identificador de issue, independentemente da con
 
 ## Regras-chave
 
+- Cada rascunho deve ter YAML frontmatter com `state: "draft"` (veja `workplan/README.md` para o formato)
 - Rascunhos **não** seguem o workflow BACKLOG → CODING → DONE
 - Quando um rascunho amadurece, é promovido para `backlog/` como plano formal
 - Veja `workplan/README.md` para a referência completa

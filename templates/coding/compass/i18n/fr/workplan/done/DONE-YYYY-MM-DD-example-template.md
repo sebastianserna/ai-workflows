@@ -1,11 +1,12 @@
-# Plan : Exemple de plan termine
-
-**Etat :** Done
-**Backlog :** YYYY-MM-DD
-**Coding :** YYYY-MM-DD
-**Done :** YYYY-MM-DD
-**Domaine :** general
-**Issue :** —
+---
+plan: "Exemple de plan termine"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > Ce fichier est un exemple de reference. Quand un plan est termine, il est deplace dans `done/`, le prefixe est renomme en `DONE-` et la date de completion est enregistree.
 

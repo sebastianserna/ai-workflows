@@ -25,7 +25,7 @@ A data reflete quando o plano foi concluído.
 
 ## Regras-chave
 
-- Cada plano deve ter o cabeçalho padronizado com `Estado: Done`
+- Cada plano deve ter YAML frontmatter com `state: "done"` (veja `workplan/README.md` para o formato)
 - Todas as caixas de seleção de progresso devem estar marcadas
 - Planos concluídos geralmente não devem ser modificados
 - Veja `workplan/README.md` para a referência completa

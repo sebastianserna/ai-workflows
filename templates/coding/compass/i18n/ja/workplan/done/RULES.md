@@ -25,7 +25,7 @@ DONE-YYYY-MM-DD-description.md
 
 ## 主要ルール
 
-- 各計画には `状態：Done` を含む標準ヘッダーが必要
+- 各計画には `state: "done"` を含むYAML frontmatterが必要（形式は `workplan/README.md` を参照）
 - すべての進捗チェックボックスがチェック済みであること
 - 完了した計画は原則として変更しない
 - 完全なリファレンスは `workplan/README.md` を参照

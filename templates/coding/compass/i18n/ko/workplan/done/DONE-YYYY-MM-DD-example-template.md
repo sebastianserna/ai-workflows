@@ -1,11 +1,12 @@
-# 계획: 완료된 예시 계획
-
-**상태:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**도메인:** 일반
-**Issue:** —
+---
+plan: "완료된 예시 계획"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > 이 파일은 참고 예시입니다. 계획이 완료되면 `done/`으로 이동하고, 접두사가 `DONE-`으로 변경되며, 완료 날짜가 기록됩니다.
 

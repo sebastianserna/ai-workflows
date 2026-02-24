@@ -1,11 +1,12 @@
-# Plan: Ejemplo de plan completado
-
-**Estado:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**Dominio:** general
-**Issue:** —
+---
+plan: "Ejemplo de plan completado"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > Este archivo es un ejemplo de referencia. Cuando un plan se completa, se mueve a `done/`, se renombra el prefijo a `DONE-` y se registra la fecha de finalización.
 

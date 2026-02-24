@@ -1,11 +1,12 @@
-# 계획: backlog의 예시 계획
-
-**상태:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**도메인:** 일반
-**Issue:** —
+---
+plan: "backlog의 예시 계획"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > 이 파일은 참고 예시입니다. 이슈 트래커가 설정된 경우, 계획의 파일 이름에 이슈 번호가 포함됩니다 (예: `BACKLOG-2026-01-15-i0001-description.md`). 트래커가 없는 경우, 형식은 `BACKLOG-YYYY-MM-DD-description.md`입니다.
 

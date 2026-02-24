@@ -1,13 +1,14 @@
-# Plano: Exemplo de plano em andamento
+---
+plan: "Exemplo de plano em andamento"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**Estado:** Coding
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** —
-**Domínio:** geral
-**Issue:** —
-
-> Este arquivo é um exemplo de referência. Quando um plano é movido de `backlog/` para `coding/`, o prefixo é renomeado para `CODING-`, e a data e o cabeçalho são atualizados.
+> Este arquivo é um exemplo de referência. Quando um plano é movido de `backlog/` para `coding/`, o prefixo é renomeado para `CODING-`, e a data e o frontmatter são atualizados.
 
 ## Progresso
 

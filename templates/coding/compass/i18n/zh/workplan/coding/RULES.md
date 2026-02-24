@@ -25,10 +25,10 @@ CODING-YYYY-MM-DD-description.md
 
 ## 关键规则
 
-- 每个计划必须有标准化标题，包含 `状态：Coding`
+- 每个计划必须有 YAML frontmatter，包含 `state: "coding"`（参见 `workplan/README.md` 了解格式）
 - 随着步骤完成，更新进度复选框
-- 完成时：移动到 `done/`，将前缀重命名为 `DONE`，更新日期和标题
-- 暂停时：移回 `backlog/`，将前缀重命名为 `BACKLOG`，更新标题
+- 完成时：移动到 `done/`，将前缀重命名为 `DONE`，更新日期和 frontmatter
+- 暂停时：移回 `backlog/`，将前缀重命名为 `BACKLOG`，更新 frontmatter
 - 参见 `workplan/README.md` 获取完整参考
 
 ## 另请参阅

@@ -1,11 +1,12 @@
-# 計画：backlogの計画例
-
-**状態：** Backlog
-**Backlog：** YYYY-MM-DD
-**Coding：** —
-**Done：** —
-**ドメイン：** 一般
-**Issue：** —
+---
+plan: "backlogの計画例"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 > このファイルは参考例です。Issueトラッカーが設定されている場合、計画のファイル名にはIssue番号が含まれます（例：`BACKLOG-2026-01-15-i0001-description.md`）。トラッカーなしの場合、形式は `BACKLOG-YYYY-MM-DD-description.md` です。
 

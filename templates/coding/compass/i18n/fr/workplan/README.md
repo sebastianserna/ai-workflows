@@ -4,8 +4,8 @@
 
 ## Configuration
 
-**Issue tracker :** aucun
-<!-- Options : GitHub | GitLab | aucun -->
+**Issue tracker :** none
+<!-- Options : GitHub | GitLab | none -->
 <!-- Pour activer : changer en "GitHub" ou "GitLab" et configurer le depot -->
 
 **Depot :** `utilisateur/nom-du-repo`
@@ -20,7 +20,7 @@ Le format depend de la configuration de l'issue tracker :
 TYPE-YYYY-MM-DD-iNNNN-description.md
 ```
 
-**Sans issue tracker (aucun) :**
+**Sans issue tracker (none) :**
 
 ```
 TYPE-YYYY-MM-DD-description.md
@@ -42,7 +42,7 @@ Lorsqu'un issue tracker est configure (GitHub ou GitLab), chaque plan **doit** a
 - L'identifiant est **permanent** — il ne change pas lorsque le plan est deplace entre les etats
 - GitHub/GitLab garantit l'unicite atomique, eliminant les risques de collision dans les environnements collaboratifs
 
-**Lorsque l'issue tracker est « aucun »**, les plans n'ont pas de segment identifiant. Le nom de fichier est simplement `TYPE-YYYY-MM-DD-description.md`.
+**Lorsque l'issue tracker est « none »**, les plans n'ont pas de segment identifiant. Le nom de fichier est simplement `TYPE-YYYY-MM-DD-description.md`.
 
 ### Regle de date
 
@@ -76,24 +76,41 @@ Chaque `RULES.md` contient les regles et conventions de nommage specifiques au d
 - `done/RULES.md` — Archive, criteres de completion
 - `draft/RULES.md` — Banque d'idees, sans workflow, sans identifiant d'issue
 
-## En-tete standardise
+## YAML Frontmatter
 
-```markdown
-# Plan : Titre descriptif
+Chaque fichier de plan doit commencer par un bloc de YAML frontmatter a la **ligne 1** (aucune ligne vide avant le `---` d'ouverture). GitHub le rend sous forme de tableau de metadonnees.
 
-**Etat :** Backlog | Coding | Done
-**Backlog :** 2026-01-15
-**Coding :** —
-**Done :** —
-**Domaine :** general
-**Issue :** —
+```yaml
+---
+plan: "Titre descriptif"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Regles de l'en-tete :**
-- L'etat doit correspondre au prefixe du nom de fichier
-- Les dates enregistrent quand chaque transition a eu lieu (`—` si non applicable)
-- **Issue** est `—` si l'issue tracker est configure comme « aucun »
-- Lorsque le tracker est actif, **Issue** contient le lien vers l'issue : `[#60](https://github.com/utilisateur/repo/issues/60)`
+**Champs du frontmatter :**
+
+| Champ | Description | Valeurs |
+|-------|-------------|---------|
+| `plan` | Titre descriptif court | Texte libre |
+| `state` | Etat actuel (doit correspondre au prefixe du nom de fichier) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Identifiant d'issue (`iNNNN`) ou vide | `"i0060"`, `""` |
+| `domain` | Domaine fonctionnel | `general`, ou specifique au projet |
+| `backlog` | Date de creation du plan | `"2026-01-15"`, `""` |
+| `coding` | Date de debut du travail | `"2026-01-20"`, `""` |
+| `done` | Date de completion | `"2026-02-01"`, `""` |
+
+**Regles du frontmatter :**
+- Le premier `---` doit etre exactement a la ligne 1 sans lignes vides avant
+- La valeur de `state` doit correspondre au prefixe du nom de fichier (en minuscules)
+- **issue** est `""` si l'issue tracker est configure comme "none"
+- Lorsque le tracker est actif, **issue** contient l'identifiant : `"i0060"`
+- Les brouillons omettent les champs `issue` et de dates entierement
+- Les champs de date enregistrent quand chaque transition a eu lieu (`""` si pas encore atteint)
 
 ## Modele standard
 
@@ -106,21 +123,22 @@ Chaque `RULES.md` contient les regles et conventions de nommage specifiques au d
 
 ### Ordre des sections
 
-En-tete -> Progression -> Objectif -> Contexte -> Implementation -> Verification -> Risques
+Frontmatter → Progression → Objectif → Contexte → Implementation → Verification → Risques
 
 Les sections optionnelles sont **omises**, pas laissees vides.
 
 ### Modele
 
 ```markdown
-# Plan : Titre descriptif
-
-**Etat :** Backlog
-**Backlog :** YYYY-MM-DD
-**Coding :** —
-**Done :** —
-**Domaine :** general
-**Issue :** —
+---
+plan: "Titre descriptif"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Progression
 
@@ -158,7 +176,7 @@ Uniquement pour les plans complexes.
 
 ### Regles
 
-1. **Progression toujours apres l'en-tete**, jamais a la fin
+1. **Progression toujours apres le frontmatter**, jamais a la fin
 2. Etapes groupees par phase (`### Phase N : Nom`)
 3. Chaque etape doit etre concrete et verifiable (pas generique)
 4. Detail technique dans Implementation, resume dans Progression
@@ -174,7 +192,7 @@ Uniquement pour les plans complexes.
 1. Creer d'abord l'issue : `gh issue create` (GitHub) ou `glab issue create` (GitLab)
 2. Noter le numero d'issue (ex. #60)
 3. Creer le fichier dans `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (ex. `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Remplir le champ `Issue` de l'en-tete avec le lien
+4. Remplir le champ `issue` du frontmatter avec l'identifiant
 
 **Sans issue tracker :**
 
@@ -183,17 +201,17 @@ Uniquement pour les plans complexes.
 ### Demarrer le travail
 
 1. Deplacer de `backlog/` vers `coding/CODING-YYYY-MM-DD-...-description.md` (date = aujourd'hui, identifiant inchange)
-2. Mettre a jour l'en-tete : `Etat : Coding`, `Coding : YYYY-MM-DD`
+2. Mettre a jour le frontmatter : `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Terminer
 
 1. Deplacer de `coding/` vers `done/DONE-YYYY-MM-DD-...-description.md` (date = aujourd'hui)
-2. Mettre a jour l'en-tete : `Etat : Done`, `Done : YYYY-MM-DD`
+2. Mettre a jour le frontmatter : `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Retourner au backlog
 
 1. Deplacer de `coding/` vers `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
-2. Mettre a jour l'en-tete : `Etat : Backlog`
+2. Mettre a jour le frontmatter : `state: "backlog"`, `coding: ""`
 
 ## References croisees
 
@@ -213,6 +231,6 @@ Voir #3 pour les details.
 
 **Regle :** ne jamais referencer un plan par son nom de fichier complet (il change a chaque transition).
 
-## Brouillons (drafts)
+## Brouillons
 
-Les brouillons sont stockes dans `draft/` avec le format `DRAFT-YYYY-MM-DD-description.md`. Ils ne suivent pas le workflow BACKLOG->CODING->DONE et n'ont pas d'identifiant d'issue. Ils servent de banque d'idees : brouillons de plans, decisions techniques, notes exploratoires. Quand un brouillon est suffisamment mur, il est promu en `backlog/` comme plan formel.
+Les brouillons sont stockes dans `draft/` avec le format `DRAFT-YYYY-MM-DD-description.md`. Ils ne suivent pas le workflow BACKLOG→CODING→DONE et n'ont pas d'identifiant d'issue. Ils servent de banque d'idees : brouillons de plans, decisions techniques, notes exploratoires. Quand un brouillon est suffisamment mur, il est promu en `backlog/` comme plan formel.

@@ -1,6 +1,10 @@
-# Draft : Exemple de brouillon
+---
+plan: "Exemple de brouillon"
+state: "draft"
+domain: "general"
+---
 
-> Ce fichier est un exemple de reference. Les brouillons n'ont pas d'identifiant d'issue et ne suivent pas le workflow backlog -> coding -> done. Ce sont des idees, des decisions techniques ou des notes exploratoires.
+> Ce fichier est un exemple de reference. Les brouillons n'ont pas d'identifiant d'issue et ne suivent pas le workflow backlog → coding → done. Ce sont des idees, des decisions techniques ou des notes exploratoires.
 
 ## Contexte
 

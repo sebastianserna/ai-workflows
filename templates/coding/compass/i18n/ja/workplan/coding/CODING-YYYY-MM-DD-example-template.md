@@ -1,13 +1,14 @@
-# 計画：進行中の計画例
+---
+plan: "進行中の計画例"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**状態：** Coding
-**Backlog：** YYYY-MM-DD
-**Coding：** YYYY-MM-DD
-**Done：** —
-**ドメイン：** 一般
-**Issue：** —
-
-> このファイルは参考例です。計画が `backlog/` から `coding/` に移動すると、プレフィックスが `CODING-` に変更され、日付とヘッダーが更新されます。
+> このファイルは参考例です。計画が `backlog/` から `coding/` に移動すると、プレフィックスが `CODING-` に変更され、日付とfrontmatterが更新されます。
 
 ## 進捗
 

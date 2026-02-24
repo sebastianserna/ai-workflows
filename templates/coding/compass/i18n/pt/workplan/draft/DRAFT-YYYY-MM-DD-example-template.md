@@ -1,4 +1,8 @@
-# Rascunho: Exemplo de rascunho
+---
+plan: "Exemplo de rascunho"
+state: "draft"
+domain: "general"
+---
 
 > Este arquivo é um exemplo de referência. Rascunhos não possuem identificador de issue e não seguem o workflow backlog → coding → done. São ideias, decisões técnicas ou notas exploratórias.
 

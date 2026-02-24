@@ -18,6 +18,7 @@ Le bozze non portano **mai** un identificatore di issue, indipendentemente dalla
 
 ## Regole chiave
 
+- Ogni bozza deve avere il YAML frontmatter con `state: "draft"` (vedere `workplan/README.md` per il formato)
 - Le bozze **non** seguono il workflow BACKLOG → CODING → DONE
 - Quando una bozza matura, viene promossa in `backlog/` come piano formale
 - Vedere `workplan/README.md` per il riferimento completo

@@ -4,8 +4,8 @@
 
 ## 配置
 
-**Issue 跟踪器：** 无
-<!-- 选项：GitHub | GitLab | 无 -->
+**Issue 跟踪器：** none
+<!-- 选项：GitHub | GitLab | none -->
 <!-- 启用方式：改为 "GitHub" 或 "GitLab" 并配置仓库 -->
 
 **仓库：** `用户名/仓库名`
@@ -20,7 +20,7 @@
 TYPE-YYYY-MM-DD-iNNNN-description.md
 ```
 
-**不使用 Issue 跟踪器（无）：**
+**不使用 Issue 跟踪器（none）：**
 
 ```
 TYPE-YYYY-MM-DD-description.md
@@ -42,7 +42,7 @@ TYPE-YYYY-MM-DD-description.md
 - 标识符是**永久的** — 即使计划在状态之间移动也不会改变
 - GitHub/GitLab 保证原子唯一性，消除协作环境中的冲突风险
 
-**当 Issue 跟踪器设为"无"时**，计划没有标识符字段。文件名格式为 `TYPE-YYYY-MM-DD-description.md`。
+**当 Issue 跟踪器设为"none"时**，计划没有标识符字段。文件名格式为 `TYPE-YYYY-MM-DD-description.md`。
 
 ### 日期规则
 
@@ -76,24 +76,41 @@ workplan/
 - `done/RULES.md` — 归档，完成标准
 - `draft/RULES.md` — 想法库，无工作流，无 Issue 标识符
 
-## 标准化标题
+## YAML Frontmatter
 
-```markdown
-# 计划：描述性标题
+每个计划文件必须在**第 1 行**以 YAML frontmatter 块开始（开头 `---` 之前不能有空行）。GitHub 会将其渲染为元数据表格。
 
-**状态：** Backlog | Coding | Done
-**Backlog：** 2026-01-15
-**Coding：** —
-**Done：** —
-**领域：** 通用
-**Issue：** —
+```yaml
+---
+plan: "描述性标题"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**标题规则：**
-- 状态必须与文件名前缀匹配
-- 日期记录每次转换发生的时间（`—` 表示不适用）
-- 如果 Issue 跟踪器配置为"无"，**Issue** 为 `—`
-- 当跟踪器处于活动状态时，**Issue** 链接到 Issue：`[#60](https://github.com/user/repo/issues/60)`
+**Frontmatter 字段：**
+
+| 字段 | 描述 | 值 |
+|------|------|-----|
+| `plan` | 简短描述性标题 | 自由文本 |
+| `state` | 当前状态（必须与文件名前缀匹配） | `backlog`、`coding`、`done`、`draft` |
+| `issue` | Issue 标识符（`iNNNN`）或为空 | `"i0060"`、`""` |
+| `domain` | 功能领域 | `general`，或项目特定 |
+| `backlog` | 计划创建日期 | `"2026-01-15"`、`""` |
+| `coding` | 工作开始日期 | `"2026-01-20"`、`""` |
+| `done` | 完成日期 | `"2026-02-01"`、`""` |
+
+**Frontmatter 规则：**
+- 第一个 `---` 必须正好在第 1 行，之前不能有空行
+- `state` 的值必须与文件名前缀匹配（小写）
+- 如果 Issue 跟踪器配置为 "none"，**issue** 为 `""`
+- 当跟踪器处于活动状态时，**issue** 包含标识符：`"i0060"`
+- 草稿完全省略 `issue` 和日期字段
+- 日期字段记录每次转换发生的时间（`""` 表示尚未达到）
 
 ## 标准模板
 
@@ -106,21 +123,22 @@ workplan/
 
 ### 章节顺序
 
-标题 → 进度 → 目标 → 背景 → 实施 → 验证 → 风险
+Frontmatter → 进度 → 目标 → 背景 → 实施 → 验证 → 风险
 
 可选章节应**省略**，不要留空。
 
 ### 模板
 
 ```markdown
-# 计划：描述性标题
-
-**状态：** Backlog
-**Backlog：** YYYY-MM-DD
-**Coding：** —
-**Done：** —
-**领域：** 通用
-**Issue：** —
+---
+plan: "描述性标题"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## 进度
 
@@ -158,7 +176,7 @@ workplan/
 
 ### 规则
 
-1. **进度始终在标题之后**，绝不放在末尾
+1. **进度始终在 frontmatter 之后**，绝不放在末尾
 2. 步骤按阶段分组（`### 阶段 N：名称`）
 3. 每个步骤必须具体且可验证（不要笼统）
 4. 技术细节放在实施中，摘要放在进度中
@@ -174,7 +192,7 @@ workplan/
 1. 首先创建 Issue：`gh issue create`（GitHub）或 `glab issue create`（GitLab）
 2. 记录 Issue 编号（例如 #60）
 3. 在 `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` 中创建文件（例如 `BACKLOG-2026-01-15-i0060-user-auth-setup.md`）
-4. 在 `Issue` 标题字段中填写链接
+4. 在 frontmatter 的 `issue` 字段中填写标识符
 
 **不使用 Issue 跟踪器：**
 
@@ -183,17 +201,17 @@ workplan/
 ### 开始工作
 
 1. 从 `backlog/` 移动到 `coding/CODING-YYYY-MM-DD-...-description.md`（日期 = 今天，标识符不变）
-2. 更新标题：`状态：Coding`，`Coding：YYYY-MM-DD`
+2. 更新 frontmatter：`state: "coding"`，`coding: "YYYY-MM-DD"`
 
 ### 完成
 
 1. 从 `coding/` 移动到 `done/DONE-YYYY-MM-DD-...-description.md`（日期 = 今天）
-2. 更新标题：`状态：Done`，`Done：YYYY-MM-DD`
+2. 更新 frontmatter：`state: "done"`，`done: "YYYY-MM-DD"`
 
 ### 退回到 backlog
 
 1. 从 `coding/` 移动到 `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
-2. 更新标题：`状态：Backlog`
+2. 更新 frontmatter：`state: "backlog"`，`coding: ""`
 
 ## 交叉引用
 

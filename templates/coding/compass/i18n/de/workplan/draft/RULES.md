@@ -18,6 +18,7 @@ Entwürfe tragen **niemals** einen Issue-Identifikator, unabhängig von der Trac
 
 ## Wichtige Regeln
 
+- Jeder Entwurf muss YAML Frontmatter mit `state: "draft"` haben (siehe `workplan/README.md` für das Format)
 - Entwürfe folgen **nicht** dem BACKLOG → CODING → DONE-Workflow
 - Wenn ein Entwurf ausgereift ist, wird er als formaler Plan in `backlog/` befördert
 - Siehe `workplan/README.md` für die vollständige Referenz

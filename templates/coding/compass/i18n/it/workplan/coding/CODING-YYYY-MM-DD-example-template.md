@@ -1,13 +1,14 @@
-# Piano: Esempio di piano in corso
+---
+plan: "Esempio di piano in corso"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**Stato:** Coding
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** —
-**Dominio:** generale
-**Issue:** —
-
-> Questo file è un esempio di riferimento. Quando un piano passa da `backlog/` a `coding/`, il prefisso viene rinominato in `CODING-`, e la data e l'intestazione vengono aggiornate.
+> Questo file è un esempio di riferimento. Quando un piano passa da `backlog/` a `coding/`, il prefisso viene rinominato in `CODING-`, e la data e il frontmatter vengono aggiornati.
 
 ## Avanzamento
 

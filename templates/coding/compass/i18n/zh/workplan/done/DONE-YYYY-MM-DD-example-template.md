@@ -1,11 +1,12 @@
-# 计划：已完成的示例计划
-
-**状态：** Done
-**Backlog：** YYYY-MM-DD
-**Coding：** YYYY-MM-DD
-**Done：** YYYY-MM-DD
-**领域：** 通用
-**Issue：** —
+---
+plan: "已完成的示例计划"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > 此文件为参考示例。当计划完成时，将移动到 `done/`，前缀重命名为 `DONE-`，并记录完成日期。
 

@@ -18,6 +18,7 @@ DRAFT-YYYY-MM-DD-description.md
 
 ## 주요 규칙
 
+- 각 초안에는 `state: "draft"`이 포함된 YAML frontmatter가 있어야 함 (형식은 `workplan/README.md` 참고)
 - 초안은 BACKLOG → CODING → DONE 워크플로를 **따르지 않음**
 - 초안이 충분히 성숙하면 `backlog/`에 정식 계획으로 승격
 - 전체 참조는 `workplan/README.md` 참고

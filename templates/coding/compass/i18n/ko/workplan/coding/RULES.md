@@ -25,10 +25,10 @@ CODING-YYYY-MM-DD-description.md
 
 ## 주요 규칙
 
-- 각 계획에는 `상태: Coding`이 포함된 표준화된 헤더가 있어야 함
+- 각 계획에는 `state: "coding"`이 포함된 YAML frontmatter가 있어야 함 (형식은 `workplan/README.md` 참고)
 - 스텝 완료 시 진행 체크박스를 업데이트
-- 완료 시: `done/`으로 이동, 접두사를 `DONE`으로 변경, 날짜와 헤더 업데이트
-- 일시 중지 시: `backlog/`로 되돌리기, 접두사를 `BACKLOG`으로 변경, 헤더 업데이트
+- 완료 시: `done/`으로 이동, 접두사를 `DONE`으로 변경, 날짜와 frontmatter 업데이트
+- 일시 중지 시: `backlog/`로 되돌리기, 접두사를 `BACKLOG`으로 변경, frontmatter 업데이트
 - 전체 참조는 `workplan/README.md` 참고
 
 ## 참고

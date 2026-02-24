@@ -25,10 +25,10 @@ La date reflete le moment ou le travail a commence.
 
 ## Regles cles
 
-- Chaque plan doit avoir l'en-tete standardise avec `Etat : Coding`
+- Chaque plan doit avoir le YAML frontmatter avec `state: "coding"` (voir `workplan/README.md` pour le format)
 - Mettre a jour les cases a cocher de progression au fur et a mesure que les etapes sont completees
-- Une fois termine : deplacer vers `done/`, renommer le prefixe en `DONE`, mettre a jour la date et l'en-tete
-- Pour mettre en pause : deplacer vers `backlog/`, renommer le prefixe en `BACKLOG`, mettre a jour l'en-tete
+- Une fois termine : deplacer vers `done/`, renommer le prefixe en `DONE`, mettre a jour la date et le frontmatter
+- Pour mettre en pause : deplacer vers `backlog/`, renommer le prefixe en `BACKLOG`, mettre a jour le frontmatter
 - Voir `workplan/README.md` pour la reference complete
 
 ## Voir aussi

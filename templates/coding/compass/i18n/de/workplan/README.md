@@ -76,24 +76,41 @@ Jede `RULES.md` enthält ordnerspezifische Regeln und Benennungskonventionen:
 - `done/RULES.md` — Archiv, Abschlusskriterien
 - `draft/RULES.md` — Ideenbank, kein Workflow, kein Issue-Identifikator
 
-## Standardisierter Header
+## YAML Frontmatter
 
-```markdown
-# Plan: Beschreibender Titel
+Jede Plandatei muss mit einem YAML-Frontmatter-Block auf **Zeile 1** beginnen (keine Leerzeilen vor dem öffnenden `---`). GitHub rendert dies als Metadatentabelle.
 
-**Status:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**Bereich:** allgemein
-**Issue:** —
+```yaml
+---
+plan: "Beschreibender Titel"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Header-Regeln:**
-- Der Status muss mit dem Dateinamen-Präfix übereinstimmen
-- Daten erfassen, wann jeder Übergang stattfand (`—` wenn nicht zutreffend)
-- **Issue** ist `—`, wenn der Issue-Tracker als „none" konfiguriert ist
-- Wenn der Tracker aktiv ist, enthält **Issue** den Link zum Issue: `[#60](https://github.com/user/repo/issues/60)`
+**Frontmatter-Felder:**
+
+| Feld | Beschreibung | Werte |
+|------|-------------|-------|
+| `plan` | Kurzer beschreibender Titel | Freitext |
+| `state` | Aktueller Status (muss mit dem Dateinamen-Präfix übereinstimmen) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Issue-Identifikator (`iNNNN`) oder leer | `"i0060"`, `""` |
+| `domain` | Funktionale Domäne | `general`, oder projektspezifisch |
+| `backlog` | Datum der Planerstellung | `"2026-01-15"`, `""` |
+| `coding` | Datum des Arbeitsbeginns | `"2026-01-20"`, `""` |
+| `done` | Datum der Fertigstellung | `"2026-02-01"`, `""` |
+
+**Frontmatter-Regeln:**
+- Das erste `---` muss genau auf Zeile 1 stehen, ohne Leerzeilen davor
+- Der `state`-Wert muss mit dem Dateinamen-Präfix übereinstimmen (Kleinbuchstaben)
+- **issue** ist `""`, wenn der Issue-Tracker als „none" konfiguriert ist
+- Wenn der Tracker aktiv ist, enthält **issue** den Identifikator: `"i0060"`
+- Entwürfe lassen die `issue`- und Datumsfelder ganz weg
+- Datumsfelder erfassen, wann jeder Übergang stattfand (`""` wenn noch nicht erreicht)
 
 ## Standard-Template
 
@@ -106,21 +123,22 @@ Jede `RULES.md` enthält ordnerspezifische Regeln und Benennungskonventionen:
 
 ### Abschnittsreihenfolge
 
-Header → Fortschritt → Ziel → Kontext → Umsetzung → Überprüfung → Risiken
+Frontmatter → Fortschritt → Ziel → Kontext → Umsetzung → Überprüfung → Risiken
 
 Optionale Abschnitte werden **weggelassen**, nicht leer gelassen.
 
 ### Template
 
 ```markdown
-# Plan: Beschreibender Titel
-
-**Status:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Bereich:** allgemein
-**Issue:** —
+---
+plan: "Beschreibender Titel"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Fortschritt
 
@@ -158,7 +176,7 @@ Nur für komplexe Pläne.
 
 ### Regeln
 
-1. **Fortschritt immer nach dem Header**, niemals am Ende
+1. **Fortschritt immer nach dem Frontmatter**, niemals am Ende
 2. Schritte nach Phasen gruppiert (`### Phase N: Name`)
 3. Jeder Schritt muss konkret und überprüfbar sein (nicht generisch)
 4. Technische Details in der Umsetzung, Zusammenfassung im Fortschritt
@@ -174,7 +192,7 @@ Nur für komplexe Pläne.
 1. Zuerst das Issue erstellen: `gh issue create` (GitHub) oder `glab issue create` (GitLab)
 2. Die Issue-Nummer notieren (z.B. #60)
 3. Datei erstellen in `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (z.B. `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Das `Issue`-Feld im Header mit dem Link ausfüllen
+4. Das `issue`-Frontmatter-Feld mit dem Identifikator ausfüllen
 
 **Ohne Issue-Tracker:**
 
@@ -183,17 +201,17 @@ Nur für komplexe Pläne.
 ### Arbeit beginnen
 
 1. Von `backlog/` nach `coding/CODING-YYYY-MM-DD-...-description.md` verschieben (Datum = heute, Identifikator unverändert)
-2. Header aktualisieren: `Status: Coding`, `Coding: YYYY-MM-DD`
+2. Frontmatter aktualisieren: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Abschließen
 
 1. Von `coding/` nach `done/DONE-YYYY-MM-DD-...-description.md` verschieben (Datum = heute)
-2. Header aktualisieren: `Status: Done`, `Done: YYYY-MM-DD`
+2. Frontmatter aktualisieren: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Zurück zum Backlog
 
 1. Von `coding/` nach `backlog/BACKLOG-YYYY-MM-DD-...-description.md` verschieben
-2. Header aktualisieren: `Status: Backlog`
+2. Frontmatter aktualisieren: `state: "backlog"`, `coding: ""`
 
 ## Querverweise
 

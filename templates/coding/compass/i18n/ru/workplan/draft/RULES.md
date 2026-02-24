@@ -18,6 +18,7 @@ DRAFT-YYYY-MM-DD-description.md
 
 ## Ключевые правила
 
+- Каждый черновик должен иметь YAML frontmatter с `state: "draft"` (формат см. в `workplan/README.md`)
 - Черновики **не** следуют процессу BACKLOG → CODING → DONE
 - Когда черновик достаточно созревает, он продвигается в `backlog/` как формальный план
 - Полную справку см. в `workplan/README.md`

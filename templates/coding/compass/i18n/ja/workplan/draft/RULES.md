@@ -18,6 +18,7 @@ DRAFT-YYYY-MM-DD-description.md
 
 ## 主要ルール
 
+- 各下書きには `state: "draft"` を含むYAML frontmatterが必要（形式は `workplan/README.md` を参照）
 - 下書きはBACKLOG → CODING → DONEのワークフローに**従わない**
 - 下書きが十分に成熟したら、`backlog/` に正式な計画として昇格させる
 - 完全なリファレンスは `workplan/README.md` を参照

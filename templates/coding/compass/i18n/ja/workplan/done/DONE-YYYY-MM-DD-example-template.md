@@ -1,11 +1,12 @@
-# 計画：完了した計画例
-
-**状態：** Done
-**Backlog：** YYYY-MM-DD
-**Coding：** YYYY-MM-DD
-**Done：** YYYY-MM-DD
-**ドメイン：** 一般
-**Issue：** —
+---
+plan: "完了した計画例"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > このファイルは参考例です。計画が完了すると `done/` に移動し、プレフィックスが `DONE-` に変更され、完了日が記録されます。
 

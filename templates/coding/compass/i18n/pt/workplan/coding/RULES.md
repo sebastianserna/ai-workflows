@@ -25,10 +25,10 @@ A data reflete quando o trabalho começou.
 
 ## Regras-chave
 
-- Cada plano deve ter o cabeçalho padronizado com `Estado: Coding`
+- Cada plano deve ter YAML frontmatter com `state: "coding"` (veja `workplan/README.md` para o formato)
 - Atualize as caixas de seleção de progresso conforme os passos são concluídos
-- Ao finalizar: mova para `done/`, renomeie o prefixo para `DONE`, atualize a data e o cabeçalho
-- Para pausar: mova de volta para `backlog/`, renomeie o prefixo para `BACKLOG`, atualize o cabeçalho
+- Ao finalizar: mova para `done/`, renomeie o prefixo para `DONE`, atualize a data e o frontmatter
+- Para pausar: mova de volta para `backlog/`, renomeie o prefixo para `BACKLOG`, atualize o frontmatter
 - Veja `workplan/README.md` para a referência completa
 
 ## Veja também

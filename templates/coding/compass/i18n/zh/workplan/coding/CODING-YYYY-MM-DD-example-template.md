@@ -1,13 +1,14 @@
-# 计划：进行中的示例计划
+---
+plan: "进行中的示例计划"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**状态：** Coding
-**Backlog：** YYYY-MM-DD
-**Coding：** YYYY-MM-DD
-**Done：** —
-**领域：** 通用
-**Issue：** —
-
-> 此文件为参考示例。当计划从 `backlog/` 移动到 `coding/` 时，前缀重命名为 `CODING-`，日期和标题也会更新。
+> 此文件为参考示例。当计划从 `backlog/` 移动到 `coding/` 时，前缀重命名为 `CODING-`，日期和 frontmatter 也会更新。
 
 ## 进度
 

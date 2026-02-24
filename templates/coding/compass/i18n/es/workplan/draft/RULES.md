@@ -18,6 +18,7 @@ Los borradores **nunca** llevan identificador de issue, independientemente de la
 
 ## Reglas clave
 
+- Cada borrador debe tener YAML frontmatter con `state: "draft"` (ver `workplan/README.md` para el formato)
 - Los borradores **no** siguen el flujo BACKLOG → CODING → DONE
 - Cuando un borrador madura, se promueve a `backlog/` como plan formal
 - Ver `workplan/README.md` para la referencia completa

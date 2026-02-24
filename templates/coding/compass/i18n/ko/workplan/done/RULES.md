@@ -25,7 +25,7 @@ DONE-YYYY-MM-DD-description.md
 
 ## 주요 규칙
 
-- 각 계획에는 `상태: Done`이 포함된 표준화된 헤더가 있어야 함
+- 각 계획에는 `state: "done"`이 포함된 YAML frontmatter가 있어야 함 (형식은 `workplan/README.md` 참고)
 - 모든 진행 체크박스가 체크되어 있어야 함
 - 완료된 계획은 일반적으로 수정하지 않음
 - 전체 참조는 `workplan/README.md` 참고
