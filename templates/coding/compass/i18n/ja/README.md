@@ -58,3 +58,7 @@ The MIT License (MIT)
 Copyright (c) <年> - <著者>
 
 このリポジトリのソースコードは、Claude、GPT、Geminiなどの高度な言語モデル（LLM）を搭載した人工知能ツールの支援により、部分的または全体的に作成されました。これらのツールの使用は、プロジェクトの著者によって慎重にガイドおよび監督されています。
+
+---
+
+[Coding Compass](https://github.com/sebastianserna/ai-workflows) v1.0.0 に基づく

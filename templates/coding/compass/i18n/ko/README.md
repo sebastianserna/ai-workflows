@@ -58,3 +58,7 @@ The MIT License (MIT)
 Copyright (c) <연도> - <저자>
 
 이 저장소의 소스 코드는 Claude, GPT, Gemini 등의 고급 언어 모델(LLM)을 기반으로 하는 인공지능 도구의 지원을 받아 부분적으로 또는 전체적으로 작성되었습니다. 이러한 도구의 사용은 프로젝트 저자에 의해 신중하게 안내되고 감독되었습니다.
+
+---
+
+[Coding Compass](https://github.com/sebastianserna/ai-workflows) v1.0.0 기반

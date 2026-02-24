@@ -58,3 +58,7 @@ The MIT License (MIT)
 Copyright (c) <年份> - <作者>
 
 本仓库的源代码部分或全部借助由 Claude、GPT、Gemini 等先进语言模型（LLM）驱动的人工智能工具创建。这些工具的使用由项目作者精心指导和监督。
+
+---
+
+基于 [Coding Compass](https://github.com/sebastianserna/ai-workflows) v1.0.0

@@ -58,3 +58,7 @@ The MIT License (MIT)
 Copyright (c) <year> - <author>
 
 The source code in this repository was created partially or entirely with the assistance of artificial intelligence tools powered by advanced language models (LLMs) such as Claude, GPT, Gemini, among others. The use of these tools has been carefully guided and supervised by the author of the project.
+
+---
+
+Based on [Coding Compass](https://github.com/sebastianserna/ai-workflows) v1.0.0

@@ -48,6 +48,17 @@ templates/
 - Do **not** include `Co-Authored-By` from AI agents in commits
 - Do **not** include "Generated with Claude Code" links in commit messages or PRs
 
+## Template versioning
+
+- Each template uses [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH)
+  - **MAJOR** — Incompatible structural changes (files renamed/removed, frontmatter schema changes)
+  - **MINOR** — New files, sections, or features added (backwards compatible)
+  - **PATCH** — Content fixes, typos, wording improvements
+- Version is **global per template** — any file change within the template increments the version
+- The current version is shown in the category README table (e.g., `templates/coding/README.md`)
+- Each template has a `CHANGELOG.md` following the [Keep a Changelog](https://keepachangelog.com/) format
+- When modifying a template, update both the version in the category README and the `CHANGELOG.md`
+
 ## Guidelines for agents
 
 - Do **not** modify templates in this repo unless explicitly asked — they are meant to be copied, not edited in place

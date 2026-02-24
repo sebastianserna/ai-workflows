@@ -58,3 +58,7 @@ The MIT License (MIT)
 Copyright (c) <annee> - <auteur>
 
 Le code source de ce depot a ete cree partiellement ou entierement avec l'aide d'outils d'intelligence artificielle alimentes par des modeles de langage avances (LLMs) tels que Claude, GPT, Gemini, entre autres. L'utilisation de ces outils a ete soigneusement guidee et supervisee par l'auteur du projet.
+
+---
+
+Basé sur [Coding Compass](https://github.com/sebastianserna/ai-workflows) v1.0.0
