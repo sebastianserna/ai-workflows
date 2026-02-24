@@ -18,6 +18,7 @@ Drafts **never** carry an issue identifier, regardless of tracker configuration.
 
 ## Key rules
 
+- Each draft must have YAML frontmatter with `state: "draft"` (see `workplan/README.md` for format)
 - Drafts do **not** follow the BACKLOG → CODING → DONE workflow
 - When a draft matures, promote it to `backlog/` as a formal plan
 - See `workplan/README.md` for full reference

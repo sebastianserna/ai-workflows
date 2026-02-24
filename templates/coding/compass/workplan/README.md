@@ -76,24 +76,41 @@ Each `RULES.md` contains folder-specific rules and naming conventions:
 - `done/RULES.md` — Archive, completion criteria
 - `draft/RULES.md` — Idea bank, no workflow, no issue identifier
 
-## Standardized header
+## YAML Frontmatter
 
-```markdown
-# Plan: Descriptive title
+Every plan file must start with a YAML frontmatter block on **line 1** (no blank lines before the opening `---`). GitHub renders this as a metadata table.
 
-**State:** Backlog | Coding | Done
-**Backlog:** 2026-01-15
-**Coding:** —
-**Done:** —
-**Domain:** general
-**Issue:** —
+```yaml
+---
+plan: "Descriptive title"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "2026-01-15"
+coding: ""
+done: ""
+---
 ```
 
-**Header rules:**
-- The state must match the filename prefix
-- Dates record when each transition occurred (`—` if not applicable)
-- **Issue** is `—` if the issue tracker is configured as "none"
-- When tracker is active, **Issue** links to the issue: `[#60](https://github.com/user/repo/issues/60)`
+**Frontmatter fields:**
+
+| Field | Description | Values |
+|-------|-------------|--------|
+| `plan` | Short descriptive title | Free text |
+| `state` | Current state (must match filename prefix) | `backlog`, `coding`, `done`, `draft` |
+| `issue` | Issue identifier (`iNNNN`) or empty | `"i0060"`, `""` |
+| `domain` | Functional domain | `general`, or project-specific |
+| `backlog` | Date the plan was created | `"2026-01-15"`, `""` |
+| `coding` | Date work started | `"2026-01-20"`, `""` |
+| `done` | Date completed | `"2026-02-01"`, `""` |
+
+**Frontmatter rules:**
+- The first `---` must be exactly on line 1 with no blank lines before it
+- The `state` value must match the filename prefix (lowercase)
+- **issue** is `""` if the issue tracker is configured as "none"
+- When tracker is active, **issue** contains the identifier: `"i0060"`
+- Drafts omit the `issue` and date fields entirely
+- Date fields record when each transition occurred (`""` if not yet reached)
 
 ## Standard template
 
@@ -106,21 +123,22 @@ Each `RULES.md` contains folder-specific rules and naming conventions:
 
 ### Section order
 
-Header → Progress → Objective → Context → Implementation → Verification → Risks
+Frontmatter → Progress → Objective → Context → Implementation → Verification → Risks
 
 Optional sections are **omitted**, not left empty.
 
 ### Template
 
 ```markdown
-# Plan: Descriptive title
-
-**State:** Backlog
-**Backlog:** YYYY-MM-DD
-**Coding:** —
-**Done:** —
-**Domain:** general
-**Issue:** —
+---
+plan: "Descriptive title"
+state: "backlog"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: ""
+done: ""
+---
 
 ## Progress
 
@@ -158,7 +176,7 @@ Only for complex plans.
 
 ### Rules
 
-1. **Progress always after the header**, never at the end
+1. **Progress always after the frontmatter**, never at the end
 2. Steps grouped by phase (`### Phase N: Name`)
 3. Each step must be concrete and verifiable (not generic)
 4. Technical detail in Implementation, summary in Progress
@@ -174,7 +192,7 @@ Only for complex plans.
 1. Create the issue first: `gh issue create` (GitHub) or `glab issue create` (GitLab)
 2. Note the issue number (e.g., #60)
 3. Create file in `backlog/BACKLOG-YYYY-MM-DD-iNNNN-description.md` (e.g., `BACKLOG-2026-01-15-i0060-user-auth-setup.md`)
-4. Fill in the `Issue` header field with the link
+4. Fill in the `issue` frontmatter field with the identifier
 
 **Without issue tracker:**
 
@@ -183,17 +201,17 @@ Only for complex plans.
 ### Start work
 
 1. Move from `backlog/` to `coding/CODING-YYYY-MM-DD-...-description.md` (date = today, identifier unchanged)
-2. Update header: `State: Coding`, `Coding: YYYY-MM-DD`
+2. Update frontmatter: `state: "coding"`, `coding: "YYYY-MM-DD"`
 
 ### Complete
 
 1. Move from `coding/` to `done/DONE-YYYY-MM-DD-...-description.md` (date = today)
-2. Update header: `State: Done`, `Done: YYYY-MM-DD`
+2. Update frontmatter: `state: "done"`, `done: "YYYY-MM-DD"`
 
 ### Return to backlog
 
 1. Move from `coding/` to `backlog/BACKLOG-YYYY-MM-DD-...-description.md`
-2. Update header: `State: Backlog`
+2. Update frontmatter: `state: "backlog"`, `coding: ""`
 
 ## Cross-references
 

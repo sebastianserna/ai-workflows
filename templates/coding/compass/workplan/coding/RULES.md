@@ -25,10 +25,10 @@ The date reflects when work started.
 
 ## Key rules
 
-- Each plan must have the standardized header with `State: Coding`
+- Each plan must have YAML frontmatter with `state: "coding"` (see `workplan/README.md` for format)
 - Update progress checkboxes as steps are completed
-- When done: move to `done/`, rename prefix to `DONE`, update date and header
-- To pause: move back to `backlog/`, rename prefix to `BACKLOG`, update header
+- When done: move to `done/`, rename prefix to `DONE`, update date and frontmatter
+- To pause: move back to `backlog/`, rename prefix to `BACKLOG`, update frontmatter
 - See `workplan/README.md` for full reference
 
 ## See also

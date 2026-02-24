@@ -1,4 +1,8 @@
-# Draft: Example draft
+---
+plan: "Example draft"
+state: "draft"
+domain: "general"
+---
 
 > This file is a reference example. Drafts have no issue identifier and do not follow the backlog → coding → done workflow. They are ideas, technical decisions, or exploratory notes.
 

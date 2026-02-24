@@ -25,7 +25,7 @@ The date reflects when the plan was completed.
 
 ## Key rules
 
-- Each plan must have the standardized header with `State: Done`
+- Each plan must have YAML frontmatter with `state: "done"` (see `workplan/README.md` for format)
 - All progress checkboxes should be checked
 - Completed plans should generally not be modified
 - See `workplan/README.md` for full reference

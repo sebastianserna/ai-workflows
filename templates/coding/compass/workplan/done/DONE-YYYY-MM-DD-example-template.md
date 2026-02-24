@@ -1,11 +1,12 @@
-# Plan: Example of completed plan
-
-**State:** Done
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** YYYY-MM-DD
-**Domain:** general
-**Issue:** —
+---
+plan: "Example of completed plan"
+state: "done"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: "YYYY-MM-DD"
+---
 
 > This file is a reference example. When a plan is completed, it is moved to `done/`, the prefix is renamed to `DONE-`, and the completion date is recorded.
 

@@ -25,9 +25,9 @@ The date reflects when the plan was created.
 
 ## Key rules
 
-- Each plan must have the standardized header with `State: Backlog`
+- Each plan must have YAML frontmatter with `state: "backlog"` (see `workplan/README.md` for format)
 - **If an issue tracker is configured**, create the issue first (`gh issue create`, `glab issue create`, etc.) and use the issue number in the filename (`iNNNN`)
-- To start work: move to `coding/`, rename prefix to `CODING`, update date and header
+- To start work: move to `coding/`, rename prefix to `CODING`, update date and frontmatter
 - Plans can also be returned here from `coding/` if paused
 - See `workplan/README.md` for full reference
 

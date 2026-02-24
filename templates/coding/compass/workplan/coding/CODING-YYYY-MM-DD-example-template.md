@@ -1,13 +1,14 @@
-# Plan: Example plan in progress
+---
+plan: "Example plan in progress"
+state: "coding"
+issue: ""
+domain: "general"
+backlog: "YYYY-MM-DD"
+coding: "YYYY-MM-DD"
+done: ""
+---
 
-**State:** Coding
-**Backlog:** YYYY-MM-DD
-**Coding:** YYYY-MM-DD
-**Done:** —
-**Domain:** general
-**Issue:** —
-
-> This file is a reference example. When a plan moves from `backlog/` to `coding/`, the prefix is renamed to `CODING-`, and the date and header are updated.
+> This file is a reference example. When a plan moves from `backlog/` to `coding/`, the prefix is renamed to `CODING-`, and the date and frontmatter are updated.
 
 ## Progress
 
