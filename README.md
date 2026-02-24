@@ -36,10 +36,10 @@ Pick a template, copy it into your project, and follow its README to get started
 
 > No templates yet.
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new templates, i18n conventions, and project structure.
-
 ## License
 
-[MIT](LICENSE)
+The MIT License (MIT)
+
+Copyright (c) 2026 - Sebastian Serna
+
+The source code in this repository was created partially or entirely with the assistance of artificial intelligence tools powered by advanced language models (LLMs) such as Claude, GPT, Gemini, among others. The use of these tools has been carefully guided and supervised by the author of the project.

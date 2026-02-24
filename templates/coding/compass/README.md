@@ -49,3 +49,12 @@ This project is set up to work with AI agents like Claude Code:
 - **CLAUDE.md** — Entry point that loads automatically when starting Claude Code
 - **wisdom/** — Technical documentation that agents consult for decision-making
 - **workplan/** — Task management system that agents can read and update
+
+## License
+
+<!-- Replace with your chosen license -->
+The MIT License (MIT)
+
+Copyright (c) <year> - <author>
+
+The source code in this repository was created partially or entirely with the assistance of artificial intelligence tools powered by advanced language models (LLMs) such as Claude, GPT, Gemini, among others. The use of these tools has been carefully guided and supervised by the author of the project.

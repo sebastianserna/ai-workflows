@@ -49,3 +49,12 @@ workplan/               # 工作计划管理
 - **CLAUDE.md** — 启动 Claude Code 时自动加载的入口文件
 - **wisdom/** — 代理在决策时参考的技术文档
 - **workplan/** — 代理可以读取和更新的任务管理系统
+
+## 许可证
+
+<!-- 替换为您选择的许可证 -->
+The MIT License (MIT)
+
+Copyright (c) <年份> - <作者>
+
+本仓库的源代码部分或全部借助由 Claude、GPT、Gemini 等先进语言模型（LLM）驱动的人工智能工具创建。这些工具的使用由项目作者精心指导和监督。

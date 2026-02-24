@@ -52,4 +52,4 @@ templates/
 
 - Do **not** modify templates in this repo unless explicitly asked — they are meant to be copied, not edited in place
 - When recommending a template, link to its README so the user can review it first
-- If no template fits the user's need, suggest creating a new one following `CONTRIBUTING.md`
+- If no template fits the user's need, suggest creating a new one

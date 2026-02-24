@@ -11,5 +11,3 @@ All available templates organized by domain.
 | [`3d/`](3d/) | 3D & Spatial | Templates for 3D modeling, texturing, and scene generation |
 | [`writing/`](writing/) | Writing & Content | Templates for creative writing, copywriting, and documentation |
 | [`other/`](other/) | Miscellaneous | Experimental and uncategorized templates |
-
-For guidelines on adding new templates, see [CONTRIBUTING.md](../CONTRIBUTING.md).

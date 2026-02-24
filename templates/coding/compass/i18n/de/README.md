@@ -49,3 +49,12 @@ Dieses Projekt ist für die Zusammenarbeit mit KI-Agenten wie Claude Code einger
 - **CLAUDE.md** — Einstiegspunkt, der beim Start von Claude Code automatisch geladen wird
 - **wisdom/** — Technische Dokumentation, die Agenten für Entscheidungen heranziehen
 - **workplan/** — Aufgabenverwaltungssystem, das Agenten lesen und aktualisieren können
+
+## Lizenz
+
+<!-- Durch die gewählte Lizenz ersetzen -->
+The MIT License (MIT)
+
+Copyright (c) <Jahr> - <Autor>
+
+Der Quellcode in diesem Repository wurde teilweise oder vollständig mit Unterstützung von Werkzeugen der künstlichen Intelligenz erstellt, die auf fortschrittlichen Sprachmodellen (LLMs) wie Claude, GPT, Gemini und anderen basieren. Der Einsatz dieser Werkzeuge wurde vom Autor des Projekts sorgfältig angeleitet und überwacht.
