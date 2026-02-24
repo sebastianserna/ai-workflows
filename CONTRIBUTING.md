@@ -62,7 +62,7 @@ Use a prefix that describes the type of change:
    ```bash
    git commit -m "feat: add react-starter template"
    git commit -m "docs: update catalog with new template"
-   git commit -m "fix: correct prompt formatting in launchpad"
+   git commit -m "fix: correct prompt formatting in compass"
    ```
 4. Push and open a pull request against `main`:
    ```bash

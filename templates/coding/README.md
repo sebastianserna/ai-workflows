@@ -8,6 +8,6 @@ This category covers AI-assisted workflows related to software development — f
 
 | Template | Description |
 |----------|-------------|
-| [`launchpad/`](launchpad/) | Base repository structure with AI agent configuration (AGENTS.md, CLAUDE.md, workplan, wisdom) |
+| [`compass/`](compass/) | Base repository structure with AI agent configuration (AGENTS.md, CLAUDE.md, workplan, wisdom) |
 
 > This category is a work in progress. More templates will be added over time.

@@ -10,7 +10,7 @@ Pick a template, copy it into your project, and follow its README to get started
 
 | Template                                   | Description                                                                                    | i18n         |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------ |
-| [`launchpad`](templates/coding/launchpad/) | Base repository structure with AI agent configuration (AGENTS.md, CLAUDE.md, workplan, wisdom) | 11 languages |
+| [`compass`](templates/coding/compass/) | Base repository structure with AI agent configuration (AGENTS.md, CLAUDE.md, workplan, wisdom) | 11 languages |
 
 ### Images
 
