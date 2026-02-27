@@ -72,15 +72,16 @@ La carpeta `workplan/` gestiona el ciclo de vida de las tareas del proyecto.
 - `backlog/` — Planes pendientes, priorizados y listos para trabajar
 - `coding/` — Planes en progreso activo
 - `done/` — Planes completados (archivo histórico)
-- `draft/` — Borradores, ideas y decisiones de arquitectura (sin flujo ni identificador)
+- `draft/` — Borradores, ideas y decisiones
 
 **Flujo:** `backlog/ -> coding/ -> done/`
 
-**Formato de nombre de archivo:**
-- Con issue tracker: `TIPO-YYYY-MM-DD-iNNNN-descripción.md`
-- Sin issue tracker: `TIPO-YYYY-MM-DD-descripción.md`
-- TIPO: `BACKLOG`, `CODING`, `DONE`
-- iNNNN: número de issue de GitHub/GitLab, zero-padded con prefijo `i` (cuando el tracker está configurado)
+**Formato de nombre de archivo:** `TIPO-YYYY-MM-DD-author_descripción.md`
+- TIPO: `BACKLOG`, `CODING`, `DONE`, `DRAFT`
+- author: username del creador del plan (GitHub, GitLab, Bitbucket, etc.)
+- `_` separa author de descripción
+
+Todos los estados comparten la misma estructura de YAML frontmatter (campos uniformes en draft, backlog, coding, done).
 
 Consultar `workplan/README.md` para la plantilla completa y reglas detalladas.
 

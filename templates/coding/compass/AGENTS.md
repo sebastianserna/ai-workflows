@@ -72,15 +72,16 @@ The `workplan/` folder manages the lifecycle of project tasks.
 - `backlog/` — Pending plans, prioritized and ready to work on
 - `coding/` — Plans in active progress
 - `done/` — Completed plans (historical archive)
-- `draft/` — Drafts, ideas, and architecture decisions (no workflow or identifier)
+- `draft/` — Drafts, ideas, and decisions
 
 **Workflow:** `backlog/ -> coding/ -> done/`
 
-**File naming format:**
-- With issue tracker: `TYPE-YYYY-MM-DD-iNNNN-description.md`
-- Without issue tracker: `TYPE-YYYY-MM-DD-description.md`
-- TYPE: `BACKLOG`, `CODING`, `DONE`
-- iNNNN: GitHub/GitLab issue number, zero-padded with `i` prefix (when tracker is configured)
+**File naming format:** `TYPE-YYYY-MM-DD-author_description.md`
+- TYPE: `BACKLOG`, `CODING`, `DONE`, `DRAFT`
+- author: Username of the plan creator (GitHub, GitLab, Bitbucket, etc.)
+- `_` separates author from description
+
+All states share the same YAML frontmatter structure (uniform fields across draft, backlog, coding, done).
 
 See `workplan/README.md` for the complete template and detailed rules.
 
