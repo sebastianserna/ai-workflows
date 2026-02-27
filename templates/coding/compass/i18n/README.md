@@ -50,17 +50,21 @@ i18n/<lang>/
 └── workplan/
     ├── README.md
     ├── backlog/
-    │   ├── RULES.md
-    │   └── BACKLOG-YYYY-MM-DD-0000-example-template.md
+    │   ├── README.md
+    │   ├── BACKLOG-YYYY-MM-DD-author_example-minimal.md
+    │   └── BACKLOG-YYYY-MM-DD-author_example-complete.md
     ├── coding/
-    │   ├── RULES.md
-    │   └── CODING-YYYY-MM-DD-0000-example-template.md
+    │   ├── README.md
+    │   ├── CODING-YYYY-MM-DD-author_example-minimal.md
+    │   └── CODING-YYYY-MM-DD-author_example-complete.md
     ├── done/
-    │   ├── RULES.md
-    │   └── DONE-YYYY-MM-DD-0000-example-template.md
+    │   ├── README.md
+    │   ├── DONE-YYYY-MM-DD-author_example-minimal.md
+    │   └── DONE-YYYY-MM-DD-author_example-complete.md
     └── draft/
-        ├── RULES.md
-        └── DRAFT-YYYY-MM-DD-example-template.md
+        ├── README.md
+        ├── DRAFT-YYYY-MM-DD-author_example-minimal.md
+        └── DRAFT-YYYY-MM-DD-author_example-complete.md
 ```
 
 ## Contributing a new language
