@@ -15,7 +15,7 @@ Leia esse arquivo antes de realizar qualquer tarefa.
 | Pasta | Finalidade |
 |-------|------------|
 | `wisdom/` | Base de conhecimento do projeto (arquitetura, guias, decisões) |
-| `workplan/` | Gestão de planos de trabalho (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | Gestão de planos de trabalho (`(draft/) -> backlog/ -> coding/ -> done/`) |
 
 ## Planos e decisões
 

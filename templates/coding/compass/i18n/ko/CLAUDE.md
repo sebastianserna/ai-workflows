@@ -15,7 +15,7 @@
 | 폴더 | 용도 |
 |------|------|
 | `wisdom/` | 프로젝트 지식 베이스 (아키텍처, 가이드, 의사결정) |
-| `workplan/` | 작업 계획 관리 (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | 작업 계획 관리 (`(draft/) -> backlog/ -> coding/ -> done/`) |
 
 ## 계획 및 의사결정
 

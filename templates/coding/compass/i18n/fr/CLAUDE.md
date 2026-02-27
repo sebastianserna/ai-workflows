@@ -15,7 +15,7 @@ Lire ce fichier avant d'effectuer toute tache.
 | Dossier | Objectif |
 |---------|----------|
 | `wisdom/` | Base de connaissances du projet (architecture, guides, decisions) |
-| `workplan/` | Gestion des plans de travail (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | Gestion des plans de travail (`(draft/) -> backlog/ -> coding/ -> done/`) |
 
 ## Plans et decisions
 

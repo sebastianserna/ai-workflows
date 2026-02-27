@@ -1,6 +1,20 @@
-# Plan management
+# Workplans
 
 > **This file is the source of truth for plan management.** AI agents must follow these instructions when creating, moving, or modifying plans.
+
+## What is a plan
+
+A plan is a structured Markdown file that works like an issue in a project tracker. It has a defined state (`draft` → `backlog` → `coding` → `done`), YAML frontmatter with metadata, and a body that guides an AI agent through the execution of its tasks. Each plan lives in the folder that matches its current state.
+
+```
+workplans/
+├── README.md          # This file (source of truth)
+├── backlog/           # Pending plans
+├── coding/            # Work in progress
+├── done/              # Completed plans (archive)
+├── draft/             # Drafts, ideas, and decisions
+└── knowledge/         # Knowledge base (architecture, development, operations)
+```
 
 ## File naming format
 
@@ -36,28 +50,6 @@ The date in the filename reflects the transition to the current state:
 | CODING | Date work started |
 | DONE | Date completed |
 | DRAFT | Date the draft was created |
-
-## Folder structure
-
-```
-workplan/
-├── README.md          # This file (source of truth)
-├── backlog/           # Pending plans
-│   └── README.md
-├── coding/            # Work in progress
-│   └── README.md
-├── done/              # Completed plans (archive)
-│   └── README.md
-└── draft/             # Drafts, ideas, and decisions
-    └── README.md
-```
-
-Each subfolder `README.md` contains folder-specific rules, naming conventions, and embedded examples (minimal and complete):
-
-- `backlog/README.md` — Entry point for new plans
-- `coding/README.md` — Active work, transition and progress rules
-- `done/README.md` — Archive, completion criteria
-- `draft/README.md` — Idea bank, drafts, and decisions
 
 ## YAML Frontmatter
 

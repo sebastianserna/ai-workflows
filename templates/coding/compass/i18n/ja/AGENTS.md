@@ -74,7 +74,7 @@ workplan/
 - `done/` — 完了した計画（履歴アーカイブ）
 - `draft/` — 下書き、アイデア、アーキテクチャ決定事項（ワークフローや識別子なし）
 
-**ワークフロー：** `backlog/ -> coding/ -> done/`
+**ワークフロー：** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **ファイル命名規則：**
 - Issueトラッカーあり：`TYPE-YYYY-MM-DD-iNNNN-description.md`

@@ -14,12 +14,11 @@ Read that file before performing any task.
 
 | Folder | Purpose |
 |--------|---------|
-| `wisdom/` | Project knowledge base (architecture, guides, decisions) |
-| `workplan/` | Work plan management (`backlog/ -> coding/ -> done/`) |
+| `workplans/` | Work plan management (`(draft/) -> backlog/ -> coding/ -> done/`) and knowledge base (`knowledge/`) |
 
 ## Plans and decisions
 
-Before proposing improvements, check `workplan/` for existing plans to avoid duplicates.
+Before proposing improvements, check `workplans/` for existing plans to avoid duplicates.
 
 ---
 

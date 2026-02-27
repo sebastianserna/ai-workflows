@@ -15,7 +15,7 @@ Leggere quel file prima di eseguire qualsiasi attività.
 | Cartella | Scopo |
 |----------|-------|
 | `wisdom/` | Base di conoscenza del progetto (architettura, guide, decisioni) |
-| `workplan/` | Gestione del piano di lavoro (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | Gestione del piano di lavoro (`(draft/) -> backlog/ -> coding/ -> done/`) |
 
 ## Piani e decisioni
 

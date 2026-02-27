@@ -33,12 +33,12 @@ cp .env.example .env
 AGENTS.md               # Instructions for AI agents
 CLAUDE.md               # Claude Code configuration
 README.md               # This file
-wisdom/                 # Knowledge base (architecture, guides)
-workplan/               # Work plan management
+workplans/              # Work plan management
 ├── backlog/            #   Pending plans
 ├── coding/             #   In progress
 ├── done/               #   Completed
-└── draft/              #   Drafts and ideas
+├── draft/              #   Drafts and ideas
+└── knowledge/          #   Knowledge base (architecture, development, operations)
 ```
 
 ## Working with AI agents
@@ -47,8 +47,7 @@ This project is set up to work with AI agents like Claude Code:
 
 - **AGENTS.md** — Complete guide for agents to understand the project
 - **CLAUDE.md** — Entry point that loads automatically when starting Claude Code
-- **wisdom/** — Technical documentation that agents consult for decision-making
-- **workplan/** — Task management system that agents can read and update
+- **workplans/** — Task management and knowledge base that agents can read and update
 
 ## License
 

@@ -74,7 +74,7 @@ Der Ordner `workplan/` verwaltet den Lebenszyklus der Projektaufgaben.
 - `done/` — Abgeschlossene Pläne (historisches Archiv)
 - `draft/` — Entwürfe, Ideen und Architekturentscheidungen (kein Workflow oder Identifikator)
 
-**Workflow:** `backlog/ -> coding/ -> done/`
+**Workflow:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **Dateinamenformat:**
 - Mit Issue-Tracker: `TYPE-YYYY-MM-DD-iNNNN-description.md`

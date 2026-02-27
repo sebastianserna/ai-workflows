@@ -16,6 +16,8 @@ This project uses [Semantic Versioning](https://semver.org/):
   - Changed: `issue` now holds a URL (any tracker) instead of `iNNNN`
   - Removed: `domain` (replaced by `tags`)
 - **Template files renamed**: `*-example-template.md` → `*-author_example-template.md`
+- **RULES.md renamed**: `RULES.md` → `README.md` in workplans subfolders for GitHub auto-rendering
+- **wisdom/ merged into workplans/**: `wisdom/` → `workplans/knowledge/` — single folder for plans and knowledge base
 
 ## [1.0.0] - 2026-02-24
 
@@ -24,5 +26,5 @@ Initial stable release.
 ### Structure
 - Project root: README.md, AGENTS.md, CLAUDE.md
 - wisdom/: architecture, development, operations
-- workplan/: backlog, coding, done, draft (with YAML frontmatter)
+- workplans/: backlog, coding, done, draft (with YAML frontmatter)
 - i18n/: 10 language translations

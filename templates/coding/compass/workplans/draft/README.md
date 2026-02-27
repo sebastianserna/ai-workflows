@@ -16,11 +16,11 @@ DRAFT-YYYY-MM-DD-author_description.md
 
 ## Key rules
 
-- Each draft must have YAML frontmatter with `state: "draft"` (see `workplan/README.md` for format)
+- Each draft must have YAML frontmatter with `state: "draft"` (see `workplans/README.md` for format)
 - Drafts use the same frontmatter structure as all other states
 - Drafts do **not** follow the BACKLOG → CODING → DONE workflow
 - When a draft matures, promote it to `backlog/` — only update `state` and `backlog` date
-- See `workplan/README.md` for full reference
+- See `workplans/README.md` for full reference
 
 ## Examples
 

@@ -36,18 +36,7 @@ i18n/<lang>/
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── README.md
-├── wisdom/
-│   ├── README.md
-│   ├── architecture/
-│   │   ├── AGENTS.md
-│   │   └── system-overview.md
-│   ├── development/
-│   │   ├── AGENTS.md
-│   │   └── getting-started.md
-│   └── operations/
-│       ├── AGENTS.md
-│       └── deployment.md
-└── workplan/
+└── workplans/
     ├── README.md
     ├── backlog/
     │   ├── README.md
@@ -61,10 +50,21 @@ i18n/<lang>/
     │   ├── README.md
     │   ├── DONE-YYYY-MM-DD-author_example-minimal.md
     │   └── DONE-YYYY-MM-DD-author_example-complete.md
-    └── draft/
+    ├── draft/
+    │   ├── README.md
+    │   ├── DRAFT-YYYY-MM-DD-author_example-minimal.md
+    │   └── DRAFT-YYYY-MM-DD-author_example-complete.md
+    └── guides/
         ├── README.md
-        ├── DRAFT-YYYY-MM-DD-author_example-minimal.md
-        └── DRAFT-YYYY-MM-DD-author_example-complete.md
+        ├── architecture/
+        │   ├── AGENTS.md
+        │   └── system-overview.md
+        ├── development/
+        │   ├── AGENTS.md
+        │   └── getting-started.md
+        └── operations/
+            ├── AGENTS.md
+            └── deployment.md
 ```
 
 ## Contributing a new language
@@ -91,7 +91,7 @@ The English files at the repository root are the **source of truth**. When they 
 
 ### When modifying English source files
 
-1. Note which files changed (e.g., `AGENTS.md`, `workplan/README.md`)
+1. Note which files changed (e.g., `AGENTS.md`, `workplans/README.md`)
 2. In the PR description, list the affected files under an **i18n impact** heading so reviewers are aware
 3. Translations do not need to be updated in the same PR — but the need should be tracked
 
@@ -105,7 +105,7 @@ Each language folder may include an optional `SYNC.md` file to record the last s
 | File | Last synced | English commit | Notes |
 |------|------------|----------------|-------|
 | AGENTS.md | 2026-02-19 | abc1234 | Up to date |
-| workplan/README.md | 2026-02-19 | abc1234 | Up to date |
+| workplans/README.md | 2026-02-19 | abc1234 | Up to date |
 ```
 
 This file is optional — it's useful when the project has active contributors maintaining translations. If no `SYNC.md` exists, assume translations match the English version at the time they were added.

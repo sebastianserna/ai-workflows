@@ -74,7 +74,7 @@ workplan/
 - `done/` — 已完成的计划（历史归档）
 - `draft/` — 草稿、想法和架构决策（无工作流或标识符）
 
-**工作流：** `backlog/ -> coding/ -> done/`
+**工作流：** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **文件命名格式：**
 - 使用 Issue 跟踪器：`TYPE-YYYY-MM-DD-iNNNN-description.md`

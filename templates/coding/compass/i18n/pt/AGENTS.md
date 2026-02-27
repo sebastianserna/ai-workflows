@@ -74,7 +74,7 @@ A pasta `workplan/` gerencia o ciclo de vida das tarefas do projeto.
 - `done/` — Planos concluídos (arquivo histórico)
 - `draft/` — Rascunhos, ideias e decisões de arquitetura (sem workflow ou identificador)
 
-**Workflow:** `backlog/ -> coding/ -> done/`
+**Workflow:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **Formato de nomes de arquivo:**
 - Com issue tracker: `TYPE-YYYY-MM-DD-iNNNN-description.md`

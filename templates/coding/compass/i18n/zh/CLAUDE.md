@@ -15,7 +15,7 @@
 | 文件夹 | 用途 |
 |--------|------|
 | `wisdom/` | 项目知识库（架构、指南、决策） |
-| `workplan/` | 工作计划管理（`backlog/ -> coding/ -> done/`） |
+| `workplan/` | 工作计划管理（`(draft/) -> backlog/ -> coding/ -> done/`） |
 
 ## 计划与决策
 

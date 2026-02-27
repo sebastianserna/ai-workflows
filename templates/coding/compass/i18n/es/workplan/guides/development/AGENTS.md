@@ -20,4 +20,4 @@
 
 - `architecture/AGENTS.md` — Cómo está diseñado el sistema
 - `operations/AGENTS.md` — Cómo se despliega y opera
-- `wisdom/README.md` — Vista general de la base de conocimiento
+- `guides/README.md` — Vista general de la base de conocimiento

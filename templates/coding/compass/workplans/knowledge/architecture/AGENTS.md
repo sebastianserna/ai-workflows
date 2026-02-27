@@ -19,4 +19,4 @@
 
 - `development/AGENTS.md` — How to work on the project
 - `operations/AGENTS.md` — How it's deployed and operated
-- `wisdom/README.md` — Full knowledge base overview
+- `knowledge/README.md` — Full knowledge base overview

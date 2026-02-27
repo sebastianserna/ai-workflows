@@ -74,7 +74,7 @@ Le dossier `workplan/` gere le cycle de vie des taches du projet.
 - `done/` — Plans termines (archive historique)
 - `draft/` — Brouillons, idees et decisions d'architecture (sans workflow ni identifiant)
 
-**Workflow :** `backlog/ -> coding/ -> done/`
+**Workflow :** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **Format de nom de fichier :**
 - Avec issue tracker : `TYPE-YYYY-MM-DD-iNNNN-description.md`

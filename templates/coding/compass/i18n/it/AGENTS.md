@@ -75,7 +75,7 @@ La cartella `workplan/` gestisce il ciclo di vita delle attività del progetto.
 - `done/` — Piani completati (archivio storico)
 - `draft/` — Bozze, idee e decisioni architetturali (senza workflow né identificatore)
 
-**Workflow:** `backlog/ -> coding/ -> done/`
+**Workflow:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **Formato dei nomi file:**
 - Con issue tracker: `TIPO-YYYY-MM-DD-iNNNN-descrizione.md`

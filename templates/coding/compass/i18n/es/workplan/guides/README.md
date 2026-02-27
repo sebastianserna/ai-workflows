@@ -1,4 +1,4 @@
-# wisdom/ — Base de conocimiento
+# guides/ — Base de conocimiento
 
 Esta carpeta contiene la documentación técnica del proyecto. Es la **fuente de verdad** que los agentes de IA consultan antes de tomar decisiones.
 
@@ -12,7 +12,7 @@ Esta carpeta contiene la documentación técnica del proyecto. Es la **fuente de
 ## Estructura
 
 ```
-wisdom/
+guides/
 ├── README.md           # Este archivo
 ├── architecture/       # Cómo está diseñado el sistema
 │   └── AGENTS.md
@@ -61,11 +61,11 @@ Las tres carpetas base cubren la mayoría de proyectos. Si el proyecto crece en 
 - Mantener actualizados cuando cambia la arquitectura
 - Referenciar desde `AGENTS.md` en la sección "Especificaciones detalladas"
 
-## Diferencia con workplan/
+## Diferencia con carpetas de planes
 
-| | `wisdom/` | `workplan/` |
+| | `guides/` | `backlog/`, `coding/`, `done/`, `draft/` |
 |---|-----------|-------------|
 | **Contiene** | Documentación permanente | Planes de trabajo con ciclo de vida |
 | **Cambia** | Cuando evoluciona la arquitectura | Constantemente (backlog → coding → done) |
-| **Formato** | Libre | Plantilla estandarizada con header |
+| **Formato** | Libre | Plantilla estandarizada con frontmatter |
 | **Propósito** | Entender el sistema | Gestionar qué se va a hacer |

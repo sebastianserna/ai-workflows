@@ -19,4 +19,4 @@
 
 - `development/AGENTS.md` — Cómo se trabaja en el proyecto
 - `operations/AGENTS.md` — Cómo se despliega y opera
-- `wisdom/README.md` — Vista general de la base de conocimiento
+- `guides/README.md` — Vista general de la base de conocimiento

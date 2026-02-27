@@ -74,7 +74,7 @@ workplan/
 - `done/` — 완료된 계획 (이력 보관)
 - `draft/` — 초안, 아이디어, 아키텍처 결정 (워크플로나 식별자 없음)
 
-**워크플로:** `backlog/ -> coding/ -> done/`
+**워크플로:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **파일 명명 형식:**
 - 이슈 트래커 사용: `TYPE-YYYY-MM-DD-iNNNN-description.md`

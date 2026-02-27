@@ -1,4 +1,4 @@
-# wisdom/ — Knowledge base
+# knowledge/ — Knowledge base
 
 This folder contains the project's technical documentation. It is the **source of truth** that AI agents consult before making decisions.
 
@@ -12,7 +12,7 @@ This folder contains the project's technical documentation. It is the **source o
 ## Structure
 
 ```
-wisdom/
+knowledge/
 ├── README.md           # This file
 ├── architecture/       # How the system is designed
 │   └── AGENTS.md
@@ -61,11 +61,11 @@ The three base folders cover most projects. If the project grows in a specific d
 - Keep updated when architecture changes
 - Reference from `AGENTS.md` in the "Detailed specifications" section
 
-## Difference from workplan/
+## Difference from plan folders
 
-| | `wisdom/` | `workplan/` |
+| | `knowledge/` | `backlog/`, `coding/`, `done/`, `draft/` |
 |---|-----------|-------------|
 | **Contains** | Permanent documentation | Work plans with lifecycle |
 | **Changes** | When architecture evolves | Constantly (backlog → coding → done) |
-| **Format** | Free-form | Standardized template with header |
+| **Format** | Free-form | Standardized template with frontmatter |
 | **Purpose** | Understand the system | Manage what needs to be done |

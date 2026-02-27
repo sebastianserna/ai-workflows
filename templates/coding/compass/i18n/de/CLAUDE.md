@@ -15,7 +15,7 @@ Lesen Sie diese Datei, bevor Sie eine Aufgabe ausführen.
 | Ordner | Zweck |
 |--------|-------|
 | `wisdom/` | Wissensbasis des Projekts (Architektur, Leitfäden, Entscheidungen) |
-| `workplan/` | Arbeitsplanverwaltung (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | Arbeitsplanverwaltung (`(draft/) -> backlog/ -> coding/ -> done/`) |
 
 ## Pläne und Entscheidungen
 

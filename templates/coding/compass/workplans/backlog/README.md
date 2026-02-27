@@ -1,27 +1,27 @@
-# Rules: coding/
+# Rules: backlog/
 
-> Plans actively being worked on.
+> Pending plans waiting to be worked on.
 
 ## What goes here
 
-- Plans currently in progress
-- Only plans that are being actively implemented
+- Plans that are defined and ready to start (or waiting for prioritization)
+- New plans enter here after creation
 
 ## Naming
 
 ```
-CODING-YYYY-MM-DD-author_description.md
+BACKLOG-YYYY-MM-DD-author_description.md
 ```
 
-The date reflects when work started.
+The date reflects when the plan was created.
 
 ## Key rules
 
-- Each plan must have YAML frontmatter with `state: "coding"` (see `workplan/README.md` for format)
-- Update progress checkboxes as steps are completed
-- When done: move to `done/`, rename prefix to `DONE`, update date and frontmatter
-- To pause: move back to `backlog/`, rename prefix to `BACKLOG`, update frontmatter
-- See `workplan/README.md` for full reference
+- Each plan must have YAML frontmatter with `state: "backlog"` (see `workplans/README.md` for format)
+- Fill in `author` (username) and other relevant frontmatter fields
+- To start work: move to `coding/`, rename prefix to `CODING`, update date and frontmatter
+- Plans can also be returned here from `coding/` if paused
+- See `workplans/README.md` for full reference
 
 ## Examples
 
@@ -30,14 +30,14 @@ The date reflects when work started.
 ```markdown
 ---
 plan: "User authentication setup"
-state: "coding"
+state: "backlog"
 author: "sebastianserna"
 author_model: "claude-opus-4"
-assignee: "sebastianserna"
-assignee_model: "claude-sonnet-4"
+assignee: ""
+assignee_model: ""
 issue: ""
 backlog: "2026-01-15"
-coding: "2026-01-20"
+coding: ""
 done: ""
 tags: "enhancement"
 ---
@@ -47,8 +47,8 @@ tags: "enhancement"
 ## Progress
 
 ### Phase 1: MVP
-- [x] Create database migration for users table
-- [x] Implement JWT token generation and validation
+- [ ] Create database migration for users table
+- [ ] Implement JWT token generation and validation
 - [ ] Add login and registration API endpoints
 - [ ] Create authentication middleware
 
@@ -68,14 +68,14 @@ Create a `users` table with `id`, `email`, `password_hash`, `created_at`. Use bc
 ```markdown
 ---
 plan: "User authentication setup"
-state: "coding"
+state: "backlog"
 author: "sebastianserna"
 author_model: "claude-opus-4"
-assignee: "sebastianserna"
-assignee_model: "claude-sonnet-4"
+assignee: ""
+assignee_model: ""
 issue: "https://github.com/user/repo/issues/60"
 backlog: "2026-01-15"
-coding: "2026-01-20"
+coding: ""
 done: ""
 tags: "enhancement, auth"
 ---
@@ -85,8 +85,8 @@ tags: "enhancement, auth"
 ## Progress
 
 ### Phase 1: MVP
-- [x] Create database migration for users table
-- [x] Implement JWT token generation and validation
+- [ ] Create database migration for users table
+- [ ] Implement JWT token generation and validation
 - [ ] Add login and registration API endpoints
 - [ ] Create authentication middleware
 
@@ -124,18 +124,10 @@ Add a `password_reset_tokens` table. Implement a `/forgot-password` endpoint tha
 
 - JWT secret must be stored in environment variables, never committed
 - Rate limiting is critical to prevent brute-force attacks on login
-
-## Comments
-
-### 2026-01-20 — sebastianserna
-Started implementation. Migration and JWT utils are done. Moving on to API endpoints.
-
-### 2026-01-21 — sebastianserna
-Decided to use refresh tokens instead of long-lived JWTs. Access token expires in 15 minutes, refresh token in 7 days.
 ```
 
 ## See also
 
-- `backlog/README.md` — Rules for pending plans
+- `coding/README.md` — Rules for plans in progress
 - `done/README.md` — Rules for completed plans
 - `draft/README.md` — Rules for drafts and ideas

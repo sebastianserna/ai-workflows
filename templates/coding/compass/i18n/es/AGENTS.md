@@ -36,7 +36,6 @@ npm run test       # Tests
 src/
 docs/
 tests/
-wisdom/
 workplan/
 ```
 -->
@@ -51,19 +50,6 @@ workplan/
 - TypeScript estricto
 -->
 
-## Base de conocimiento (wisdom/)
-
-La carpeta `wisdom/` contiene la documentación técnica del proyecto. Es la fuente de verdad para entender cómo funciona el sistema.
-
-Estructura base:
-- `wisdom/architecture/` — Cómo está diseñado el sistema (decisiones, patrones, estructura)
-- `wisdom/development/` — Cómo se trabaja en el proyecto (convenciones, testing, workflows)
-- `wisdom/operations/` — Cómo se despliega y opera (CI/CD, ambientes, monitoreo)
-
-Se pueden agregar carpetas adicionales (`database/`, `security/`, `integrations/`) cuando el proyecto lo requiera. Ver `wisdom/README.md` para criterios.
-
-Los agentes deben consultar `wisdom/` antes de tomar decisiones que afecten arquitectura o patrones existentes.
-
 ## Gestión de planes (workplan/)
 
 La carpeta `workplan/` gestiona el ciclo de vida de las tareas del proyecto.
@@ -73,8 +59,9 @@ La carpeta `workplan/` gestiona el ciclo de vida de las tareas del proyecto.
 - `coding/` — Planes en progreso activo
 - `done/` — Planes completados (archivo histórico)
 - `draft/` — Borradores, ideas y decisiones
+- `guides/` — Base de conocimiento (arquitectura, desarrollo, operaciones)
 
-**Flujo:** `backlog/ -> coding/ -> done/`
+**Flujo:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **Formato de nombre de archivo:** `TIPO-YYYY-MM-DD-author_descripción.md`
 - TIPO: `BACKLOG`, `CODING`, `DONE`, `DRAFT`
@@ -82,6 +69,8 @@ La carpeta `workplan/` gestiona el ciclo de vida de las tareas del proyecto.
 - `_` separa author de descripción
 
 Todos los estados comparten la misma estructura de YAML frontmatter (campos uniformes en draft, backlog, coding, done).
+
+La subcarpeta `guides/` contiene la documentación técnica del proyecto — la fuente de verdad para entender cómo funciona el sistema. Los agentes deben consultar `workplan/guides/` antes de tomar decisiones que afecten arquitectura o patrones existentes. Ver `workplan/guides/README.md` para detalles.
 
 Consultar `workplan/README.md` para la plantilla completa y reglas detalladas.
 
@@ -131,9 +120,9 @@ Consultar `workplan/README.md` para la plantilla completa y reglas detalladas.
 
 ## Especificaciones detalladas
 
-<!-- Lista enlaces a documentos de referencia en wisdom/. Ejemplo:
+<!-- Lista enlaces a documentos de referencia en workplan/guides/. Ejemplo:
 | Documento | Contenido |
 |-----------|-----------|
-| [wisdom/architecture/...](wisdom/architecture/...) | Arquitectura del sistema |
-| [wisdom/database/...](wisdom/database/...) | Esquema y convenciones DB |
+| [workplan/guides/architecture/...](workplan/guides/architecture/...) | Arquitectura del sistema |
+| [workplan/guides/database/...](workplan/guides/database/...) | Esquema y convenciones DB |
 -->

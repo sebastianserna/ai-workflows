@@ -14,8 +14,7 @@ Lee ese archivo antes de realizar cualquier tarea.
 
 | Carpeta | Propósito |
 |---------|-----------|
-| `wisdom/` | Base de conocimiento del proyecto (arquitectura, guías, decisiones) |
-| `workplan/` | Gestión de planes de trabajo (`backlog/ -> coding/ -> done/`) |
+| `workplan/` | Gestión de planes de trabajo (`(draft/) -> backlog/ -> coding/ -> done/`) y base de conocimiento (`guides/`) |
 
 ## Planes y decisiones
 

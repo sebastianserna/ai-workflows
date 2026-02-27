@@ -36,8 +36,7 @@ npm run test       # Tests
 src/
 docs/
 tests/
-wisdom/
-workplan/
+workplans/
 ```
 -->
 
@@ -51,30 +50,18 @@ workplan/
 - Strict TypeScript
 -->
 
-## Knowledge base (wisdom/)
+## Plan management (workplans/)
 
-The `wisdom/` folder contains the project's technical documentation. It is the source of truth for understanding how the system works.
-
-Base structure:
-- `wisdom/architecture/` — How the system is designed (decisions, patterns, structure)
-- `wisdom/development/` — How to work on the project (conventions, testing, workflows)
-- `wisdom/operations/` — How it's deployed and operated (CI/CD, environments, monitoring)
-
-Additional folders (`database/`, `security/`, `integrations/`) can be added when the project requires them. See `wisdom/README.md` for criteria.
-
-Agents should consult `wisdom/` before making decisions that affect existing architecture or patterns.
-
-## Plan management (workplan/)
-
-The `workplan/` folder manages the lifecycle of project tasks.
+The `workplans/` folder manages the lifecycle of project tasks.
 
 **Folders:**
 - `backlog/` — Pending plans, prioritized and ready to work on
 - `coding/` — Plans in active progress
 - `done/` — Completed plans (historical archive)
 - `draft/` — Drafts, ideas, and decisions
+- `knowledge/` — Knowledge base (architecture, development, operations)
 
-**Workflow:** `backlog/ -> coding/ -> done/`
+**Workflow:** `(draft/) -> backlog/ -> coding/ -> done/`
 
 **File naming format:** `TYPE-YYYY-MM-DD-author_description.md`
 - TYPE: `BACKLOG`, `CODING`, `DONE`, `DRAFT`
@@ -83,7 +70,9 @@ The `workplan/` folder manages the lifecycle of project tasks.
 
 All states share the same YAML frontmatter structure (uniform fields across draft, backlog, coding, done).
 
-See `workplan/README.md` for the complete template and detailed rules.
+The `knowledge/` subfolder contains the project's technical documentation — the source of truth for understanding how the system works. Agents should consult `workplans/knowledge/` before making decisions that affect existing architecture or patterns. See `workplans/knowledge/README.md` for details.
+
+See `workplans/README.md` for the complete template and detailed rules.
 
 ## Auth and roles
 
@@ -131,9 +120,9 @@ See `workplan/README.md` for the complete template and detailed rules.
 
 ## Detailed specifications
 
-<!-- List links to reference documents in wisdom/. Example:
+<!-- List links to reference documents in workplans/knowledge/. Example:
 | Document | Content |
 |----------|---------|
-| [wisdom/architecture/...](wisdom/architecture/...) | System architecture |
-| [wisdom/database/...](wisdom/database/...) | DB schema and conventions |
+| [workplans/knowledge/architecture/...](workplans/knowledge/architecture/...) | System architecture |
+| [workplans/knowledge/database/...](workplans/knowledge/database/...) | DB schema and conventions |
 -->

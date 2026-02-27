@@ -1,26 +1,27 @@
-# Rules: done/
+# Rules: coding/
 
-> Completed plans — archive and reference.
+> Plans actively being worked on.
 
 ## What goes here
 
-- Plans that have been fully implemented and verified
-- This folder serves as a historical record
+- Plans currently in progress
+- Only plans that are being actively implemented
 
 ## Naming
 
 ```
-DONE-YYYY-MM-DD-author_description.md
+CODING-YYYY-MM-DD-author_description.md
 ```
 
-The date reflects when the plan was completed.
+The date reflects when work started.
 
 ## Key rules
 
-- Each plan must have YAML frontmatter with `state: "done"` (see `workplan/README.md` for format)
-- All progress checkboxes should be checked
-- Completed plans should generally not be modified
-- See `workplan/README.md` for full reference
+- Each plan must have YAML frontmatter with `state: "coding"` (see `workplans/README.md` for format)
+- Update progress checkboxes as steps are completed
+- When done: move to `done/`, rename prefix to `DONE`, update date and frontmatter
+- To pause: move back to `backlog/`, rename prefix to `BACKLOG`, update frontmatter
+- See `workplans/README.md` for full reference
 
 ## Examples
 
@@ -29,7 +30,7 @@ The date reflects when the plan was completed.
 ```markdown
 ---
 plan: "User authentication setup"
-state: "done"
+state: "coding"
 author: "sebastianserna"
 author_model: "claude-opus-4"
 assignee: "sebastianserna"
@@ -37,7 +38,7 @@ assignee_model: "claude-sonnet-4"
 issue: ""
 backlog: "2026-01-15"
 coding: "2026-01-20"
-done: "2026-02-01"
+done: ""
 tags: "enhancement"
 ---
 
@@ -48,8 +49,8 @@ tags: "enhancement"
 ### Phase 1: MVP
 - [x] Create database migration for users table
 - [x] Implement JWT token generation and validation
-- [x] Add login and registration API endpoints
-- [x] Create authentication middleware
+- [ ] Add login and registration API endpoints
+- [ ] Create authentication middleware
 
 ## Objective
 
@@ -67,7 +68,7 @@ Create a `users` table with `id`, `email`, `password_hash`, `created_at`. Use bc
 ```markdown
 ---
 plan: "User authentication setup"
-state: "done"
+state: "coding"
 author: "sebastianserna"
 author_model: "claude-opus-4"
 assignee: "sebastianserna"
@@ -75,7 +76,7 @@ assignee_model: "claude-sonnet-4"
 issue: "https://github.com/user/repo/issues/60"
 backlog: "2026-01-15"
 coding: "2026-01-20"
-done: "2026-02-01"
+done: ""
 tags: "enhancement, auth"
 ---
 
@@ -86,12 +87,12 @@ tags: "enhancement, auth"
 ### Phase 1: MVP
 - [x] Create database migration for users table
 - [x] Implement JWT token generation and validation
-- [x] Add login and registration API endpoints
-- [x] Create authentication middleware
+- [ ] Add login and registration API endpoints
+- [ ] Create authentication middleware
 
 ### Phase 2: Improvements
-- [x] Add password reset flow
-- [x] Implement rate limiting on auth endpoints
+- [ ] Add password reset flow
+- [ ] Implement rate limiting on auth endpoints
 
 ## Objective
 
@@ -113,11 +114,16 @@ Add a `password_reset_tokens` table. Implement a `/forgot-password` endpoint tha
 
 ## Verification
 
-- [x] Registration creates a user and returns a valid JWT
-- [x] Login with correct credentials returns a JWT
-- [x] Login with wrong credentials returns 401
-- [x] Protected endpoints reject requests without a valid token
-- [x] Password reset flow sends email and allows password change
+- [ ] Registration creates a user and returns a valid JWT
+- [ ] Login with correct credentials returns a JWT
+- [ ] Login with wrong credentials returns 401
+- [ ] Protected endpoints reject requests without a valid token
+- [ ] Password reset flow sends email and allows password change
+
+## Risks
+
+- JWT secret must be stored in environment variables, never committed
+- Rate limiting is critical to prevent brute-force attacks on login
 
 ## Comments
 
@@ -126,13 +132,10 @@ Started implementation. Migration and JWT utils are done. Moving on to API endpo
 
 ### 2026-01-21 — sebastianserna
 Decided to use refresh tokens instead of long-lived JWTs. Access token expires in 15 minutes, refresh token in 7 days.
-
-### 2026-02-01 — sebastianserna
-All phases complete. Rate limiting set to 5 attempts per minute per IP. PR merged.
 ```
 
 ## See also
 
 - `backlog/README.md` — Rules for pending plans
-- `coding/README.md` — Rules for plans in progress
+- `done/README.md` — Rules for completed plans
 - `draft/README.md` — Rules for drafts and ideas

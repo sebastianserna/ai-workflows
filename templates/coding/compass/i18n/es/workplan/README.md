@@ -48,7 +48,9 @@ workplan/
 │   └── README.md
 ├── done/              # Planes completados (archivo)
 │   └── README.md
-└── draft/             # Borradores, ideas y decisiones
+├── draft/             # Borradores, ideas y decisiones
+│   └── README.md
+└── guides/            # Base de conocimiento (arquitectura, desarrollo, operaciones)
     └── README.md
 ```
 
@@ -58,6 +60,7 @@ Cada `README.md` de subcarpeta contiene reglas, convenciones de nomenclatura y e
 - `coding/README.md` — Trabajo activo, reglas de transición y progreso
 - `done/README.md` — Archivo, criterios de completado
 - `draft/README.md` — Banco de ideas, borradores y decisiones
+- `guides/README.md` — Vista general de la base de conocimiento y criterios de expansión
 
 ## YAML Frontmatter
 
